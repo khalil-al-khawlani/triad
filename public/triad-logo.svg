@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Triad Logo</title>
+  <desc id="desc">Arabic Triad logo with glowing cyan text and triangle mark.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#1f7bbf" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#0b2a52" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#071833" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081733"/>
+      <stop offset="100%" stop-color="#0a1f44"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0a1f44" flood-opacity="0.55"/>
+    </filter>
+    <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#22d3ee" flood-opacity="0.85"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#1e3a8a" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <circle cx="256" cy="232" r="150" fill="url(#glow)"/>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(78 170)">
+      <path d="M0 152V36C0 16.1 16.1 0 36 0h56c8.8 0 16 7.2 16 16v20c0 8.8-7.2 16-16 16H52c-8.8 0-16 7.2-16 16v32h56c8.8 0 16 7.2 16 16v20c0 8.8-7.2 16-16 16H36c-19.9 0-36-16.1-36-36Z" fill="#62e7f2"/>
+      <rect x="0" y="130" width="112" height="22" rx="10" fill="#4f1f8f"/>
+      <path d="M132 152V36C132 16.1 148.1 0 168 0h44c19.9 0 36 16.1 36 36v116c0 19.9-16.1 36-36 36h-44c-19.9 0-36-16.1-36-36Zm36-16h24c8.8 0 16-7.2 16-16V52c0-8.8-7.2-16-16-16h-24c-8.8 0-16 7.2-16 16v68c0 8.8 7.2 16 16 16Z" fill="#62e7f2"/>
+      <rect x="132" y="130" width="116" height="22" rx="10" fill="#4f1f8f"/>
+
+      <path d="M280 152V36c0-19.9 16.1-36 36-36h56c8.8 0 16 7.2 16 16v20c0 8.8-7.2 16-16 16h-40c-8.8 0-16 7.2-16 16v32h56c8.8 0 16 7.2 16 16v20c0 8.8-7.2 16-16 16h-56c-19.9 0-36-16.1-36-36Z" fill="#62e7f2"/>
+      <rect x="280" y="130" width="112" height="22" rx="10" fill="#4f1f8f"/>
+
+      <rect x="400" y="0" width="20" height="68" rx="8" fill="#62e7f2"/>
+      <rect x="424" y="0" width="20" height="68" rx="8" fill="#62e7f2"/>
+      <rect x="400" y="0" width="20" height="14" rx="7" fill="#4f1f8f"/>
+      <rect x="424" y="0" width="20" height="14" rx="7" fill="#4f1f8f"/>
+
+      <path d="M172 28L196 0l24 28H172Z" fill="#b0f7ff"/>
+      <path d="M172 28h48l-4 10h-40l-4-10Z" fill="#4f1f8f"/>
+
+      <path d="M142 186h26v12c0 4.4 3.6 8 8 8h18c4.4 0 8-3.6 8-8v-12h26v12c0 18-14.6 32-32.6 32h-20.8c-18 0-32.6-14-32.6-32v-12Z" fill="#62e7f2"/>
+      <path d="M258 186h26v12c0 4.4 3.6 8 8 8h18c4.4 0 8-3.6 8-8v-12h26v12c0 18-14.6 32-32.6 32h-20.8c-18 0-32.6-14-32.6-32v-12Z" fill="#62e7f2"/>
+      <path d="M142 186h26v10h-26zM258 186h26v10h-26z" fill="#4f1f8f"/>
+    </g>
+
+    <g filter="url(#textGlow)" fill="#22d3ee" font-family="Cairo, Tajawal, Arial, sans-serif" font-weight="900" text-anchor="middle">
+      <text x="256" y="410" font-size="60" letter-spacing="1.5">ترياد</text>
+      <text x="256" y="440" font-size="18" letter-spacing="4">TRIAD MEDIA</text>
+    </g>
+  </g>
+</svg>
