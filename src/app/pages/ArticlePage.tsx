@@ -22,6 +22,7 @@ export function ArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
   const article = getArticleById(articleId || "");
   const [copied, setCopied] = useState(false);
+  const articleVideo = (article as { video?: string } | undefined)?.video;
 
   if (!article) {
     return (
@@ -186,6 +187,20 @@ export function ArticlePage() {
                     صورة توضيحية | © ترياد ٢٠٢٦
                   </p>
                 </div>
+
+                {articleVideo && (
+                  <div className="mx-6 sm:mx-10 mt-6 rounded-2xl overflow-hidden border border-gray-100 bg-black">
+                    <video
+                      src={articleVideo}
+                      controls
+                      preload="metadata"
+                      className="w-full h-auto max-h-[520px]"
+                    />
+                    <p className="text-xs text-gray-400 mt-2 mr-1 bg-white px-2 py-1">
+                      فيديو المقابلة | © ترياد ٢٠٢٦
+                    </p>
+                  </div>
+                )}
 
                 {/* Article body */}
                 <div className="p-6 sm:p-10">

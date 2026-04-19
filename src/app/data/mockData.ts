@@ -364,6 +364,7 @@ export const articles = [
     category: "heritage",
     subcategory: "reports",
     image: IMAGES.mosque,
+    video: "/turath-madinah.mp4",
     tags: ["تراث", "المدينة المنورة", "قباء", "رؤية 2030"],
     views: "٨,٩٢٠",
     featured: false,

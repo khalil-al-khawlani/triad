@@ -154,12 +154,7 @@ export function Navbar() {
                 to="/podcast"
                 className="px-4 py-2 text-sm text-[#0a1f44] hover:text-[#145e94] hover:bg-[#eaf3ff] rounded-lg font-semibold transition-colors"
               >
-                البودكاست
-              </Link>
-              <Link
-                to="/editors"
-                className="px-4 py-2 text-sm text-[#0a1f44] hover:text-[#145e94] hover:bg-[#eaf3ff] rounded-lg font-semibold transition-colors"
-              >
+              
                 المحررون
               </Link>
               <Link

@@ -12,6 +12,7 @@ interface Article {
   category: string;
   subcategory: string;
   image: string;
+  video?: string;
   tags: string[];
   views: string;
   featured?: boolean;
@@ -32,11 +33,23 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         className="group flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200"
       >
         <div className="w-24 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+          {article.video ? (
+            <video
+              src={article.video}
+              poster={article.image}
+              muted
+              loop
+              playsInline
+              autoPlay
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : (
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
         </div>
         <div className="flex-1 min-w-0">
           {category && (
@@ -69,11 +82,23 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         className="group block"
       >
         <div className="relative overflow-hidden rounded-xl aspect-[16/9] mb-3">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
+          {article.video ? (
+            <video
+              src={article.video}
+              poster={article.image}
+              muted
+              loop
+              playsInline
+              autoPlay
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           {category && (
             <span
@@ -105,11 +130,23 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         className="group block relative overflow-hidden rounded-2xl"
       >
         <div className="aspect-[16/9] overflow-hidden">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
+          {article.video ? (
+            <video
+              src={article.video}
+              poster={article.image}
+              muted
+              loop
+              playsInline
+              autoPlay
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          ) : (
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f44]/90 via-[#0a1f44]/40 to-transparent" />
         <div className="absolute bottom-0 right-0 left-0 p-6">
@@ -154,11 +191,23 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
       className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
     >
       <div className="relative overflow-hidden aspect-[16/10]">
-        <img
-          src={article.image}
-          alt={article.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {article.video ? (
+          <video
+            src={article.video}
+            poster={article.image}
+            muted
+            loop
+            playsInline
+            autoPlay
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         {category && (
           <span
             className="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full"
