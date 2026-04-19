@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Twitter, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Twitter, Music2 } from "lucide-react";
 
 export function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -14,20 +14,37 @@ export function ContactPage() {
     {
       icon: <Mail className="w-5 h-5" />,
       label: "البريد الإلكتروني",
-      value: "contact@triad-media.com",
-      link: "mailto:contact@triad-media.com",
+      value: "Triad2026@gmail.com",
+      link: "mailto:Triad2026@gmail.com",
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: "الهاتف",
-      value: "+971 4 XXX XXXX",
-      link: "tel:+97140000000",
+      value: "+966-0000",
+      link: "tel:+9660000",
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "العنوان",
-      value: "دبي، الإمارات العربية المتحدة",
+      value: "المدينة المنورة، المملكة العربية السعودية",
       link: "#",
+    },
+  ];
+
+  const socialLinks = [
+    {
+      name: "X (تويتر)",
+      icon: <Twitter className="w-4 h-4" />,
+      color: "#111111",
+      href: "https://x.com/triiad_sa?s=21&t=LFnKEdD2FgJ7K8XoVeWfjg",
+      label: "@triiad_sa",
+    },
+    {
+      name: "TikTok",
+      icon: <Music2 className="w-4 h-4" />,
+      color: "#111111",
+      href: "https://www.tiktok.com/@triad_sa?_r=1&_t=ZS-95fUhOBebcT",
+      label: "@triad_sa",
     },
   ];
 
@@ -189,19 +206,33 @@ export function ContactPage() {
               </div>
             </div>
 
+            {/* Map */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h3 className="font-bold text-[#0a1f44] mb-5 pb-3 border-b border-gray-100">
+                موقعنا
+              </h3>
+              <div className="overflow-hidden rounded-xl border border-gray-100">
+                <iframe
+                  title="خريطة المدينة المنورة"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=39.56%2C24.42%2C39.66%2C24.50&layer=mapnik&marker=24.4672%2C39.6111"
+                  className="w-full h-48"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
             {/* Social media */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
               <h3 className="font-bold text-[#0a1f44] mb-5 pb-3 border-b border-gray-100">
                 تابعنا على وسائل التواصل
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                {[
-                  { name: "تويتر", icon: <Twitter className="w-4 h-4" />, color: "#1DA1F2", followers: "٢٠ ألف" },
-                  { name: "لينكدإن", icon: <Linkedin className="w-4 h-4" />, color: "#0A66C2", followers: "٥ ألف" },
-                ].map((social) => (
+                {socialLinks.map((social) => (
                   <a
                     key={social.name}
-                    href="#"
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all group"
                   >
                     <div
@@ -212,7 +243,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-[#0a1f44]">{social.name}</p>
-                      <p className="text-xs text-gray-400">{social.followers} متابع</p>
+                      <p className="text-xs text-gray-400">{social.label}</p>
                     </div>
                   </a>
                 ))}

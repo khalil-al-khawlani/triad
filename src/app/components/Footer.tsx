@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Twitter, Linkedin, Youtube, Instagram, Send } from "lucide-react";
+import { Twitter, Music2, Send } from "lucide-react";
 import { categories, subcategories } from "../data/mockData";
 import { TriadLogo } from "./TriadLogo";
 
@@ -19,14 +19,22 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3">
               {[
-                { Icon: Twitter, label: "تويتر" },
-                { Icon: Linkedin, label: "لينكدإن" },
-                { Icon: Youtube, label: "يوتيوب" },
-                { Icon: Instagram, label: "إنستغرام" },
-              ].map(({ Icon, label }) => (
+                {
+                  Icon: Twitter,
+                  label: "X (تويتر)",
+                  href: "https://x.com/triiad_sa?s=21&t=LFnKEdD2FgJ7K8XoVeWfjg",
+                },
+                {
+                  Icon: Music2,
+                  label: "TikTok",
+                  href: "https://www.tiktok.com/@triad_sa?_r=1&_t=ZS-95fUhOBebcT",
+                },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#c9a227] flex items-center justify-center transition-colors"
                 >
@@ -63,12 +71,8 @@ export function Footer() {
                   ثري دي
                 </Link>
               </li>
-              <li>
-                <Link to="/podcast" className="text-blue-200 hover:text-[#c9a227] text-sm transition-colors flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-[#c9a227]" />
-                  البودكاست
-                </Link>
-              </li>
+              
+                
               <li>
                 <Link to="/editors" className="text-blue-200 hover:text-[#c9a227] text-sm transition-colors flex items-center gap-2">
                   <span className="w-1 h-1 rounded-full bg-[#c9a227]" />
