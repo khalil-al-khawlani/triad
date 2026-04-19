@@ -9,7 +9,6 @@ import { AboutPage } from "./pages/AboutPage";
 import { EditorsPage } from "./pages/EditorsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ThreeDPage } from "./pages/ThreeDPage";
-import { PodcastPage } from "./pages/PodcastPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 function Root() {
@@ -35,7 +34,6 @@ export const router = createBrowserRouter([
       { path: "article/:articleId", Component: ArticlePage },
       { path: "about", Component: AboutPage },
       { path: "three-d", Component: ThreeDPage },
-      { path: "podcast", Component: PodcastPage },
       { path: "editors", Component: EditorsPage },
       { path: "contact", Component: ContactPage },
       { path: "*", Component: NotFoundPage },

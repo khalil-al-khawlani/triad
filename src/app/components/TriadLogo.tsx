@@ -8,6 +8,8 @@ export function TriadLogo({ variant = "navbar", size = "md" }: TriadLogoProps) {
 
   const iconSize = size === "sm" ? 32 : size === "lg" ? 52 : 42;
   const textSize = size === "sm" ? "1.25rem" : size === "lg" ? "2.25rem" : "1.75rem";
+  const enTextSize = size === "lg" ? "0.72rem" : "0.62rem";
+  const wordGap = size === "lg" ? 4 : 3;
 
   return (
     <div className="flex items-center gap-2.5 select-none">
@@ -74,7 +76,16 @@ export function TriadLogo({ variant = "navbar", size = "md" }: TriadLogoProps) {
       </div>
 
       {/* Wordmark */}
-      <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: wordGap,
+          lineHeight: 1,
+          transform: "translateY(1px)",
+        }}
+      >
         <span
           style={{
             fontFamily: "'Cairo', sans-serif",
@@ -85,7 +96,7 @@ export function TriadLogo({ variant = "navbar", size = "md" }: TriadLogoProps) {
             textShadow: isFooter
               ? "2px 2px 0px rgba(0,80,180,0.6), 0 0 20px rgba(34,211,238,0.3)"
               : "none",
-            lineHeight: 1.1,
+            lineHeight: 1,
           }}
         >
           ترياد
@@ -95,11 +106,13 @@ export function TriadLogo({ variant = "navbar", size = "md" }: TriadLogoProps) {
             style={{
               fontFamily: "'Cairo', sans-serif",
               fontWeight: 500,
-              fontSize: "0.6rem",
+              fontSize: enTextSize,
               color: isFooter ? "rgba(34,211,238,0.6)" : "#c9a227",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.15em",
               textTransform: "uppercase",
-              lineHeight: 1,
+              lineHeight: 1.2,
+              marginInlineStart: "0.08em",
+              whiteSpace: "nowrap",
             }}
           >
             TRIAD MEDIA

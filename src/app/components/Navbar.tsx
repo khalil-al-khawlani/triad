@@ -124,15 +124,9 @@ export function Navbar() {
                         </div>
                         {/* <p className="text-xs text-gray-500 mb-4 leading-relaxed">{cat.description}</p> */}
                         <div className="space-y-1">
-                          <Link
-                            to={`/category/${cat.slug}`}
-                            className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#ecf4ff] text-[#0a1f44] transition-colors"
-                            onClick={() => setMegaMenu(null)}
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a227]" />
-                            {/* <span className="text-sm font-medium">جميع المقالات</span> */}
-                          </Link>
-                          {subcategories.map((sub) => (
+                          {subcategories
+                            .filter((sub) => sub.name.trim().length > 0)
+                            .map((sub) => (
                             <Link
                               key={sub.id}
                               to={`/category/${cat.slug}/${sub.slug}`}
@@ -140,16 +134,10 @@ export function Navbar() {
                               onClick={() => setMegaMenu(null)}
                             >
                               <span className="w-1.5 h-1.5 rounded-full bg-gray-300" />
-                              <span className="text-sm">{sub.name}</span>
+                              <span className="text-sm">{sub.name.trim()}</span>
                             </Link>
                           ))}
                         </div>
-                      </div>
-                      <div
-                        className="px-4 py-3 text-xs text-white font-semibold"
-                        style={{ backgroundColor: cat.color }}
-                      >
-                        {cat.articleCount}+ مقال ومحتوى
                       </div>
                     </div>
                   )}
@@ -252,14 +240,16 @@ export function Navbar() {
                       >
                         الكل
                       </Link>
-                      {subcategories.map((sub) => (
+                      {subcategories
+                        .filter((sub) => sub.name.trim().length > 0)
+                        .map((sub) => (
                         <Link
                           key={sub.id}
                           to={`/category/${cat.slug}/${sub.slug}`}
                           className="block px-3 py-2 text-sm text-gray-700 hover:text-[#0a1f44] hover:bg-[#eaf3ff] rounded-lg"
                           onClick={() => setMobileOpen(false)}
                         >
-                          {sub.name}
+                          {sub.name.trim()}
                         </Link>
                       ))}
                     </div>
