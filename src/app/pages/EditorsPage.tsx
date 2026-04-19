@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { editors } from "../data/mockData";
 import { Twitter, Linkedin, FileText } from "lucide-react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 export function EditorsPage() {
   return (
@@ -44,7 +45,7 @@ export function EditorsPage() {
                 >
                   <div className="flex items-start gap-5">
                     <div className="relative flex-shrink-0">
-                      <img
+                      <ImageWithFallback
                         src={editor.image}
                         alt={editor.name}
                         className="w-24 h-24 rounded-2xl object-cover"
@@ -106,7 +107,7 @@ export function EditorsPage() {
                   className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <ImageWithFallback
                       src={editor.image}
                       alt={editor.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
