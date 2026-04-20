@@ -38,7 +38,7 @@ export function AboutPage() {
 
   const triadMethods = [
     {
-      num: "١",
+      num: "1",
       title: "المعايشة التفاعلية",
       subtitle: "D3 — ثلاثي الأبعاد",
       desc: "تجربة تُمكّن القارئ من التجوّل داخل الحدث كأنه يقف داخله، يكتشف من كل زاوية ويتفاعل مع عناصر المشهد.",
@@ -46,7 +46,7 @@ export function AboutPage() {
       bg: "linear-gradient(135deg, #0a1f44 0%, #1e3a8a 100%)",
     },
     {
-      num: "٢",
+      num: "2",
       title: "السرد القصصي",
       subtitle: "الكواليس الإنسانية",
       desc: "تحويل ما خلف الخبر إلى قصة إنسانية بأسلوب قصصي، من خلال عدة نقاط عرض: كيف بدأ الحدث؟ ما المواقف التي حصلت في كواليسه؟",
@@ -54,23 +54,13 @@ export function AboutPage() {
       bg: "linear-gradient(135deg, #7c3f00 0%, #92400e 100%)",
     },
     {
-      num: "٣",
+      num: "3",
       title: "البودكاست التحليلي",
       subtitle: "العقل والتأثير",
       desc: "مناقشة الخبر بأسلوب تحليلي ومقارن بين طرق عرض الحدث، وما التأثير الذي تُبديه كل طريقة على عقل الجمهور.",
       color: "#10b981",
       bg: "linear-gradient(135deg, #064e3b 0%, #065f46 100%)",
     },
-  ];
-
-  const milestones = [
-    { year: "٢٠١٨", event: "انطلاق منصة ترياد بفريق صغير من الصحفيين المتحمسين والمبدعين" },
-    { year: "٢٠١٩", event: "التوسع وإطلاق أقسام التراث والتقنية والمجتمع بمنهجية الرواية الثلاثية" },
-    { year: "٢٠٢٠", event: "تجاوز مليون زيارة شهرية وحصد جائزة أفضل منصة إعلامية مبتكرة" },
-    { year: "٢٠٢١", event: "إطلاق التطبيق المحمول مع تجربة المعايشة التفاعلية ثلاثية الأبعاد" },
-    { year: "٢٠٢٢", event: "الشراكة مع ١٢ مؤسسة إعلامية عربية وشبكة مراسلين إقليمية" },
-    { year: "٢٠٢٤", event: "إطلاق وحدة البودكاست التحليلي ووحدة السرد القصصي الإنساني" },
-    { year: "٢٠٢٦", event: "الوصول إلى ٥ ملايين قارئ شهري عبر ٢٢ دولة عربية" },
   ];
 
   return (
@@ -92,7 +82,7 @@ export function AboutPage() {
               منصة إعلامية تروي القصة من ثلاث زوايا
             </h1>
             <p className="text-blue-100 leading-loose text-lg">
-              ترياد منصة إعلامية رقمية مبتكرة، تأسست عام ٢٠١٨ بهدف تقديم الخبر الواحد عبر ثلاث روايات متكاملة: المعايشة التفاعلية، والسرد القصصي، والبودكاست التحليلي — لأن كل قصة تستحق أن تُعاش، لا أن تُقرأ فحسب.
+              ترياد منصة إعلامية رقمية مبتكرة، تهدف إلى تقديم الخبر الواحد عبر ثلاث روايات متكاملة: المعايشة التفاعلية، والسرد القصصي، والبودكاست التحليلي — لأن كل قصة تستحق أن تُعاش، لا أن تُقرأ فحسب.
             </p>
           </div>
         </div>
@@ -175,10 +165,10 @@ export function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { num: "٥ م+", label: "قارئ شهري" },
-              { num: "٢٢", label: "دولة عربية" },
-              { num: "٧٠٠+", label: "مقال ومحتوى" },
-              { num: "٣٠+", label: "صحفي ومحرر" },
+              { num: "5M+", label: "قارئ شهري" },
+              { num: "22", label: "دولة عربية" },
+              { num: "700+", label: "مقال ومحتوى" },
+              { num: "30+", label: "صحفي ومحرر" },
             ].map((stat) => (
               <div key={stat.label} className="text-center p-6 bg-white/10 rounded-2xl">
                 <div
@@ -218,35 +208,6 @@ export function AboutPage() {
                 <p className="text-gray-500 text-sm leading-relaxed">{value.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 sm:py-20 bg-[#f8fafc]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="font-black text-[#0a1f44] mb-3" style={{ fontSize: "1.75rem" }}>
-              مسيرتنا عبر السنين
-            </h2>
-            <p className="text-gray-500">محطات بارزة في رحلة ترياد</p>
-          </div>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute right-8 top-0 bottom-0 w-0.5 bg-gray-200" />
-            <div className="space-y-8">
-              {milestones.map((m, i) => (
-                <div key={i} className="flex items-start gap-6 relative">
-                  <div className="relative z-10 w-16 flex-shrink-0">
-                    <div className="w-4 h-4 rounded-full bg-[#c9a227] border-4 border-white shadow-sm mr-auto ml-6 mt-2" />
-                  </div>
-                  <div className="flex-1 pb-6">
-                    <span className="text-[#c9a227] font-black text-sm block mb-1">{m.year}</span>
-                    <p className="text-gray-700 leading-relaxed text-sm">{m.event}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

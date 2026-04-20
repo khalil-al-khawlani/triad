@@ -5,6 +5,7 @@ import { ArticleCard } from "../components/ArticleCard";
 import { SectionHeader } from "../components/SectionHeader";
 
 export function ThreeDPage() {
+  const polycamCaptureUrl = "https://poly.cam/capture/7eae9151-cb5b-4463-9d2d-cd326ce0c783";
   const immersiveStories = articles
     .filter((article) => article.subcategory === "reports")
     .slice(0, 6);
@@ -62,6 +63,43 @@ export function ThreeDPage() {
               <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden mb-12">
+          <div className="p-6 sm:p-8 border-b border-gray-100">
+            <h2 className="font-black text-[#0a1f44] mb-2" style={{ fontSize: "clamp(1.2rem, 2vw, 1.7rem)" }}>
+              تجربة 3D التفاعلية
+            </h2>
+            <p className="text-gray-500 leading-relaxed">
+              هذا هو نموذج الـ3D المطلوب. يمكنك تدوير المشهد والتكبير والتصغير مباشرة من داخل الصفحة.
+            </p>
+          </div>
+
+          <div className="p-4 sm:p-6 bg-[#f8fafc]">
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-black aspect-[16/10]">
+              <iframe
+                title="Polycam 3D Capture"
+                src={polycamCaptureUrl}
+                className="w-full h-full"
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <a
+                href={polycamCaptureUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0a1f44] text-white text-sm font-bold hover:bg-[#1e3a8a] transition-colors"
+              >
+                فتح النموذج في Polycam
+              </a>
+              <span className="text-xs text-gray-500">
+                في حال بطء التحميل داخل الصفحة، استخدم الفتح الخارجي.
+              </span>
+            </div>
+          </div>
         </div>
 
         <SectionHeader

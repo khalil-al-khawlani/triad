@@ -18,6 +18,15 @@ export const IMAGES = {
   investigationsEditor: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
   podcastEditor: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
   threeDEditor: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
+  investigation1: "/data/investigation1.png",
+  investigationExpertTariq: "/data/investigation-expert-tariq.png",
+  investigationExpertAbdullah: "/data/investigation-expert-abdullah.png",
+  investigationEduStats: "/data/investigation-edu-stats.png",
+  digitalMadinahCover: "/data/digital-madinah-cover.png",
+  digitalMadinahNumbers: "/data/digital-madinah-numbers.png",
+  digitalMadinahEasyLife: "/data/digital-madinah-easy-life.png",
+  digitalMadinahIhab: "/data/digital-madinah-ihab.png",
+  digitalMadinahWalaa: "/data/digital-madinah-walaa.png",
 };
 
 export type CategorySlug = "heritage" | "technology" | "society";
@@ -217,7 +226,7 @@ export const articles = [
     },
     date: "١٨ أبريل ٢٠٢٦",
     readTime: "٥ دقائق",
-    category: "heritage",
+    category: "technology",
     subcategory: "reports",
     image: IMAGES.brtMadinah,
     tags: ["المدينة المنورة", "شباب", "مبادرات", "محتوى رقمي"],
@@ -250,7 +259,7 @@ export const articles = [
     },
     date: "١٨ أبريل ٢٠٢٦",
     readTime: "٨ دقائق",
-    category: "technology",
+    category: "society",
     subcategory: "investigations",
     image: IMAGES.techWorkspace,
     tags: ["بودكاست", "شباب", "إعلام رقمي", "تحليل"],
@@ -434,7 +443,7 @@ export const articles = [
     readTime: "٦ دقائق",
     category: "society",
     subcategory: "reports",
-    image: IMAGES.newsroom,
+    image: "/data/coffee-story-1.png",
     tags: ["قهوة", "مقاهٍ", "شباب", "أسلوب حياة"],
     views: "٦,٤٠٢",
     featured: false,
@@ -465,9 +474,15 @@ export const articles = [
     },
     date: "١٩ أبريل ٢٠٢٦",
     readTime: "٨ دقائق",
-    category: "technology",
+    category: "society",
     subcategory: "reports",
     image: IMAGES.technology,
+    gallery: [
+      {
+        src: "/data/digital-relationships-entry.png",
+        caption: "مدخل رقمي: العلاقات الإنسانية في ظل الحياة الرقمية",
+      },
+    ],
     tags: ["تحول رقمي", "علاقات", "تواصل", "أسرة"],
     views: "١٠,٣٣٠",
     featured: false,
@@ -530,43 +545,7 @@ export const articles = [
     views: "٨,٤٧٠",
     featured: false,
   },
-  {
-    id: "15",
-    slug: "madinah-brt-infographic-brief",
-    title: "إنفوجرافيك: مشروع الحافلات السريعة في المدينة المنورة",
-    subtitle: "ملخص رقمي للمسارات والمحطات والطاقة الاستيعابية",
-    excerpt: "عرض مختصر لأبرز بيانات مشروع BRT في المدينة المنورة: المسارات، المحطات، والأهداف التشغيلية.",
-    content: `**المعلومات الأساسية**
 
-- طول المسارات: 52 كم
-- عدد المحطات: 33 محطة
-- الطاقة الاستيعابية: 1800 راكب/ساعة
-
-**المسار الأول**
-
-36 كم - 22 محطة - مطار الأمير محمد بن عبدالعزيز حتى غرب المدينة مرورًا بمواقع حيوية.
-
-**المسار الثاني**
-
-16 كم - 11 محطة - من ميدان سيد الشهداء (جبل أحد) حتى مسجد الميقات.
-
-**الهدف**
-
-تحسين التنقل، رفع كفاءة النقل العام، وتسهيل وصول السكان والزوار للأماكن المهمة.`,
-    author: {
-      name: "ريمان الأحمدي",
-      avatar: IMAGES.editor1,
-      title: "محررة إنفوجرافيك",
-    },
-    date: "١٩ أبريل ٢٠٢٦",
-    readTime: "٣ دقائق",
-    category: "society",
-    subcategory: "reports",
-    image: IMAGES.breaking,
-    tags: ["إنفوجرافيك", "BRT", "محطات", "المدينة"],
-    views: "٥,٦٢٠",
-    featured: false,
-  },
   {
     id: "16",
     slug: "qibaa-walkway-human-centered-cities",
@@ -587,7 +566,7 @@ export const articles = [
     readTime: "٦ دقائق",
     category: "heritage",
     subcategory: "articles",
-    image: IMAGES.heritage,
+    image: "/data/city-humanization-qabaa.png",
     tags: ["جادة قباء", "أنسنة المدن", "تخطيط حضري", "المدينة"],
     views: "٧,٩٨٠",
     featured: false,
@@ -612,7 +591,7 @@ export const articles = [
     readTime: "٥ دقائق",
     category: "heritage",
     subcategory: "reports",
-    image: IMAGES.mosque,
+    image: "/data/spiritual-atmosphere-mosque.png",
     tags: ["المسجد النبوي", "رمضان", "خدمات", "زوار"],
     views: "٩,٨٣٠",
     featured: false,
@@ -643,7 +622,7 @@ export const articles = [
     },
     date: "١٩ أبريل ٢٠٢٦",
     readTime: "٦ دقائق",
-    category: "society",
+    category: "heritage",
     subcategory: "articles",
     image: IMAGES.society,
     tags: ["ألعاب شعبية", "أطفال", "تراث", "تربية"],
@@ -675,9 +654,159 @@ export const articles = [
     readTime: "٣ دقائق",
     category: "technology",
     subcategory: "reports",
-    image: IMAGES.techWorkspace,
+    image: "/data/infographic-youth-content.png",
     tags: ["إنفوجرافيك", "شباب", "تدريب", "محتوى رقمي"],
     views: "٤,٣٩٠",
+    featured: false,
+  },
+  {
+    id: "20",
+    slug: "screen-generation-silent-digital-addiction-investigation",
+    title: "جيل الشاشات: حين تتحول المتعة إلى إدمان صامت",
+    subtitle: "تحقيق يرصد أثر الإفراط في استخدام الأجهزة على الأطفال والمراهقين",
+    excerpt: "يربط هذا التحقيق بين ارتفاع ساعات التعرض للشاشات وتراجع التركيز والتحصيل الدراسي وازدياد الضغوط النفسية، مع شهادات مختصين وأسر وتجارب ميدانية.",
+    contentSource: "/data/investigation-full.md",
+    content: `شهد العالم في السنوات الأخيرة زيادة ملحوظة في استعمال الأجهزة الإلكترونية، خصوصًا بين الأطفال والمراهقين. ومع التحول الرقمي السريع، أصبحت الشاشات جزءًا يوميًا من الحياة، ما فتح بابًا واسعًا للتساؤل حول أثرها على السلوك والتعلم والصحة النفسية.
+
+**أرقام تتجاوز الحدود الصحية**
+
+تشير بيانات حديثة إلى أن 77% من الأطفال يستخدمون الأجهزة الإلكترونية يوميًا، بينما يقضي 36.7% منهم من 3 إلى 4 ساعات يوميًا أمام الشاشات. وفي عطلات نهاية الأسبوع ترتفع المدة لأكثر من 5 ساعات لدى 38%، وهي معدلات تتجاوز الحدود الموصى بها.
+
+**بين الفائدة والإفراط**
+
+يؤكد مختصون أن المشكلة ليست في التقنية نفسها، بل في الإفراط. ويشير استشاري الطب النفسي طارق الحبيب إلى أن الاستخدام المفرط يؤثر على التركيز ويرفع مستويات التشتت والانفعال لدى الأطفال.
+
+**انعكاسات اجتماعية وتعليمية**
+
+ترى أستاذة علم الاجتماع هدى الجهني أن الاعتماد الزائد على الأجهزة يضعف التفاعل الاجتماعي الحقيقي ومهارات التواصل. كما تُظهر بيانات تعليمية وجود علاقة بين كثافة الاستخدام وتراجع التحصيل لدى بعض الطلاب بسبب ضعف الانتباه وقلة النوم.
+
+**الصحة النفسية تحت الضغط**
+
+يشير استشاري الطب النفسي عبدالله السبيعي إلى أن الاستخدام الزائد، خصوصًا قبل النوم، يرتبط بزيادة القلق والتوتر واضطرابات النوم. وتؤكد دراسات أن تجاوز 4 ساعات يوميًا يرفع احتمالية المشكلات السلوكية.
+
+**حلول عملية تبدأ من المنزل**
+
+توصي الجهات المختصة بتنظيم وقت استخدام الأجهزة للأطفال، مع توفير بدائل مثل الرياضة والهوايات، ومراقبة المحتوى وبناء حوار يومي مع الأبناء حول الاستخدام الآمن والمتوازن للتقنية.
+
+**الخلاصة**
+
+إدمان الإلكترونيات لم يعد ظاهرة عابرة، بل ملف تربوي ونفسي واجتماعي متكامل، يتطلب شراكة الأسرة والمدرسة والمجتمع لصناعة توازن صحي بين العالم الرقمي والحياة الواقعية.`,
+    author: {
+      name: "مجد الشلالي",
+      avatar: IMAGES.editor2,
+      title: "محرر تحقيقات",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "١١ دقيقة",
+    category: "society",
+    subcategory: "investigations",
+    image: IMAGES.investigation1,
+    gallery: [
+      {
+        src: "/data/investigation-tariq-habib.png",
+        caption: "استشاري الطب النفسي طارق الحبيب",
+      },
+      {
+        src: "/data/investigation-saudi-ministry-edu.png",
+        caption: "مؤشرات من وزارة التعليم السعودية",
+      },
+      {
+        src: "/data/investigation-abdullah-subaie.png",
+        caption: "استشاري الطب النفسي عبدالله السبيعي",
+      },
+    ],
+    tags: ["إدمان رقمي", "أطفال", "مراهقون", "شاشات", "تحقيق"],
+    views: "٣,٢٨٠",
+    featured: false,
+  },
+  {
+    id: "21",
+    slug: "madinah-digital-transformation-services-investigation",
+    title: "التحول الرقمي في المدينة المنورة: بين سرعة الخدمة واتساع الفجوة الرقمية",
+    subtitle: "تحقيق يرصد أثر التحول الرقمي على جودة الخدمة وشمولية الوصول لجميع الفئات",
+    excerpt: "تحقيق ميداني وتحليلي يكشف كيف حسنت الخدمات الرقمية سرعة الإنجاز، وفي الوقت نفسه أبرز تحدي الفجوة الرقمية خصوصًا لدى كبار السن.",
+    content: `يشهد المجتمع السعودي تحولاً رقمياً متسارعاً أعاد تشكيل العلاقة بين المواطن والجهات الخدمية، حيث أصبحت خدمات كثيرة تُنجز عبر المنصات الإلكترونية دون الحاجة إلى المراجعة الحضورية. وفي المدينة المنورة، برز هذا التحول بوضوح في خدمات المواعيد والوثائق والمعاملات البلدية.
+
+**المدينة نحو الذكاء الرقمي**
+
+داخل الأمانة وهيئة التطوير، لم يعد التحول الرقمي مجرد أدوات تقنية منفصلة، بل أصبح جزءاً من بنية العمل المؤسسي. هذا التحول انعكس على سرعة إنجاز المعاملات وتقليل الإجراءات الورقية ورفع كفاءة التنسيق بين الإدارات.
+
+**تكامل الخدمات والبيانات**
+
+تجربة المدينة المنورة الرقمية تُظهر توجهاً أوسع من الخدمة الفردية إلى التخطيط الحضري الذكي. وجود منصات بيانات حضرية متقدمة يدعم اتخاذ القرار ويربط الجهات المختلفة ضمن منظومة رقمية واحدة، بما يخدم السكان والزوار ويعزز الجاهزية المستقبلية.
+
+**الابتكار في خدمة الناس**
+
+تؤكد التجارب المحلية أن نجاح التحول الرقمي لا يقاس فقط بتحويل النماذج الورقية إلى نماذج إلكترونية، بل بقدرة المستخدم على إنهاء الخدمة بسهولة ووضوح. لذلك أصبح تحسين تجربة المستخدم جزءاً أساسياً من تطوير الخدمات.
+
+**الأرقام تكشف التحول**
+
+المؤشرات الوطنية والمحلية تشير إلى توسع واضح في استخدام الخدمات الرقمية، وارتفاع حجم العمليات الإلكترونية، وتقدم المدن السعودية في مؤشرات المدن الذكية. هذه الأرقام تعكس انتقالاً فعلياً في نمط إنجاز المعاملات من الحضور الشخصي إلى الإدارة الرقمية اليومية.
+
+**حياة أسهل رقمياً... ولكن**
+
+بالنسبة لشريحة كبيرة من المستخدمين، أصبحت الخدمات الحكومية عبر الهاتف أسرع وأكثر سلاسة. لكن هذا التحسن لا يظهر بالدرجة نفسها لدى جميع الفئات؛ فبعض المستخدمين، خاصة كبار السن، يواجهون صعوبات مرتبطة بتعدد الخطوات وأكواد التحقق والتنقل بين الواجهات.
+
+**فجوة تحتاج معالجة**
+
+تكشف التجربة أن عدالة التحول الرقمي لا تتحقق بتوفر الخدمة فقط، بل بقدرة الجميع على استخدامها باستقلالية وثقة. لذلك تظل الشمولية الرقمية وتصميم الخدمات وفق الفروق العمرية والمعرفية شرطاً ضرورياً لنجاح التحول.
+
+**الخلاصة**
+
+المدينة المنورة قطعت شوطاً مهماً في التحول الرقمي، لكن استدامة النجاح تتطلب استكمال البعد الإنساني: تبسيط الواجهات، رفع الوعي الرقمي، ومرافقة الفئات الأقل خبرة تقنياً حتى يستفيد الجميع من الخدمة بالجودة نفسها.`,
+    author: {
+      name: "مجد الشلالي",
+      avatar: IMAGES.editor2,
+      title: "محرر تحقيقات",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "١٢ دقيقة",
+    category: "society",
+    subcategory: "investigations",
+    image: IMAGES.digitalMadinahCover,
+    contentSource: "/data/digital-madinah-full.md",
+    inlineMedia: [
+      {
+        afterHeading: "المدينة نحو الذكاء الرقمي",
+        src: IMAGES.digitalMadinahIhab,
+        caption: "إيهاب سالم - زاوية تكامل الخدمات والتحول الرقمي الحضري",
+      },
+      {
+        afterHeading: "الابتكار في خدمة الناس",
+        src: IMAGES.digitalMadinahWalaa,
+        caption: "ولاء الحارثي - دور الابتكار في تبسيط تجربة المستخدم",
+      },
+      {
+        afterHeading: "الأرقام تكشف التحول",
+        src: IMAGES.digitalMadinahNumbers,
+        caption: "إنفوجرافيك: مؤشرات التحول الرقمي في المدينة المنورة",
+      },
+      {
+        afterHeading: "حياة أسهل رقمياً",
+        src: IMAGES.digitalMadinahEasyLife,
+        caption: "مشهد يعكس أثر الخدمات الرقمية على الحياة اليومية",
+      },
+    ],
+    gallery: [
+      {
+        src: IMAGES.digitalMadinahIhab,
+        caption: "إيهاب سالم",
+      },
+      {
+        src: IMAGES.digitalMadinahEasyLife,
+        caption: "الحياة أسهل رقمياً",
+      },
+      {
+        src: IMAGES.digitalMadinahNumbers,
+        caption: "الأرقام تكشف التحول",
+      },
+      {
+        src: IMAGES.digitalMadinahWalaa,
+        caption: "ولاء الحارثي",
+      },
+    ],
+    tags: ["المدينة المنورة", "تحول رقمي", "فجوة رقمية", "خدمات حكومية", "تحقيق"],
+    views: "٢,٩١٠",
     featured: false,
   },
 ];

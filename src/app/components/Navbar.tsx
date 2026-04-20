@@ -86,7 +86,7 @@ export function Navbar() {
             {/* Center: Nav links */}
             <div className="hidden lg:flex items-center gap-1">
               <Link
-                to="/"
+                to="/home"
                 className="px-4 py-2 text-sm text-[#0a1f44] hover:text-[#145e94] hover:bg-[#eaf3ff] rounded-lg font-semibold transition-colors"
               >
                 الرئيسية
@@ -151,10 +151,9 @@ export function Navbar() {
                 ثري دي
               </Link>
               <Link
-                to="/podcast"
+                to="/editors"
                 className="px-4 py-2 text-sm text-[#0a1f44] hover:text-[#145e94] hover:bg-[#eaf3ff] rounded-lg font-semibold transition-colors"
               >
-              
                 المحررون
               </Link>
               <Link
@@ -201,84 +200,87 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-[#dbe8ff] bg-[#f8fbff]">
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-              <Link
-                to="/"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                الرئيسية
-              </Link>
-              <Link
-                to="/about"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                من نحن
-              </Link>
-              {categories.map((cat) => (
-                <div key={cat.id}>
-                  <button
-                    className="w-full flex items-center justify-between px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                    onClick={() => setMobileCat(mobileCat === cat.id ? null : cat.id)}
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileCat === cat.id ? "rotate-180" : ""}`} />
-                    {cat.name}
-                  </button>
-                  {mobileCat === cat.id && (
-                    <div className="mr-4 border-r-2 border-[#dbe8ff] pr-4 mb-2 space-y-1">
-                      <Link
-                        to={`/category/${cat.slug}`}
-                        className="block px-3 py-2 text-sm text-gray-700 hover:text-[#0a1f44] hover:bg-[#eaf3ff] rounded-lg"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        الكل
-                      </Link>
-                      {subcategories
-                        .filter((sub) => sub.name.trim().length > 0)
-                        .map((sub) => (
+          <div className="fixed inset-0 z-50 lg:hidden">
+            <button
+              aria-label="إغلاق القائمة"
+              className="absolute inset-0 bg-black/25"
+              onClick={() => setMobileOpen(false)}
+            />
+
+            <div className="absolute top-0 right-0 h-full w-[50vw] min-w-[280px] max-w-[360px] bg-[#f8fbff] shadow-2xl border-l border-[#dbe8ff] overflow-y-auto">
+              <div className="max-w-7xl mx-auto px-4 py-4 space-y-1 text-right">
+                <Link
+                  to="/home"
+                  className="flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  الرئيسية
+                </Link>
+                <Link
+                  to="/about"
+                  className="flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  من نحن
+                </Link>
+                {categories.map((cat) => (
+                  <div key={cat.id} className="rounded-lg">
+                    <button
+                      className="w-full flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                      onClick={() => setMobileCat(mobileCat === cat.id ? null : cat.id)}
+                    >
+                      <span className="flex-1 text-right">{cat.name}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${mobileCat === cat.id ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {mobileCat === cat.id && (
+                      <div className="mr-4 border-r-2 border-[#dbe8ff] pr-4 mb-2 space-y-1 text-right">
                         <Link
-                          key={sub.id}
-                          to={`/category/${cat.slug}/${sub.slug}`}
-                          className="block px-3 py-2 text-sm text-gray-700 hover:text-[#0a1f44] hover:bg-[#eaf3ff] rounded-lg"
+                          to={`/category/${cat.slug}`}
+                          className="block px-3 py-2 text-sm text-gray-700 hover:text-[#0a1f44] hover:bg-[#eaf3ff] rounded-lg text-right"
                           onClick={() => setMobileOpen(false)}
                         >
-                          {sub.name.trim()}
+                          الكل
                         </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <Link
-                to="/three-d"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                ثري دي
-              </Link>
-              <Link
-                to="/podcast"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                البودكاست
-              </Link>
-              <Link
-                to="/editors"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                المحررون
-              </Link>
-              <Link
-                to="/contact"
-                className="block px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                تواصل معنا
-              </Link>
+                        {subcategories
+                          .filter((sub) => sub.name.trim().length > 0)
+                          .map((sub) => (
+                            <Link
+                              key={sub.id}
+                              to={`/category/${cat.slug}/${sub.slug}`}
+                              className="block px-3 py-2 text-sm text-gray-700 hover:text-[#0a1f44] hover:bg-[#eaf3ff] rounded-lg text-right"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {sub.name.trim()}
+                            </Link>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                <Link
+                  to="/three-d"
+                  className="flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  ثري دي
+                </Link>
+                <Link
+                  to="/editors"
+                  className="flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  المحررون
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex flex-row-reverse items-center justify-end gap-2 px-4 py-3 text-[#0a1f44] font-semibold hover:bg-[#eaf3ff] rounded-lg text-right"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  تواصل معنا
+                </Link>
+              </div>
             </div>
           </div>
         )}

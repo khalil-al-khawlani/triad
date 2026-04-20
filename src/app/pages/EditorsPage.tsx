@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { editors } from "../data/mockData";
-import { Twitter, Linkedin, FileText } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { Twitter, Linkedin } from "lucide-react";
 
 export function EditorsPage() {
   return (
@@ -43,48 +42,36 @@ export function EditorsPage() {
                   key={editor.id}
                   className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group"
                 >
-                  <div className="flex items-start gap-5">
-                    <div className="relative flex-shrink-0">
-                      <ImageWithFallback
-                        src={editor.image}
-                        alt={editor.name}
-                        className="w-24 h-24 rounded-2xl object-cover"
-                      />
-                      <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-[#c9a227] rounded-lg flex items-center justify-center">
-                        <FileText className="w-4 h-4 text-[#0a1f44]" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-black text-[#0a1f44] text-lg mb-1">{editor.name}</h3>
-                      <p className="text-[#c9a227] font-bold text-sm mb-3">{editor.title}</p>
-                      <p className="text-gray-500 text-sm leading-relaxed mb-4">{editor.bio}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {editor.specialization.map((spec) => (
-                          <span
-                            key={spec}
-                            className="px-3 py-1 bg-[#f8fafc] text-[#0a1f44] text-xs font-medium rounded-full border border-gray-100"
-                          >
-                            {spec}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <a
-                          href={editor.socialLinks.twitter}
-                          className="p-2 rounded-lg bg-gray-50 hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
+                  <div className="flex-1">
+                    <h3 className="font-black text-[#0a1f44] text-lg mb-1">{editor.name}</h3>
+                    <p className="text-[#c9a227] font-bold text-sm mb-3">{editor.title}</p>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{editor.bio}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {editor.specialization.map((spec) => (
+                        <span
+                          key={spec}
+                          className="px-3 py-1 bg-[#f8fafc] text-[#0a1f44] text-xs font-medium rounded-full border border-gray-100"
                         >
-                          <Twitter className="w-4 h-4" />
-                        </a>
-                        <a
-                          href={editor.socialLinks.linkedin}
-                          className="p-2 rounded-lg bg-gray-50 hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
-                        >
-                          <Linkedin className="w-4 h-4" />
-                        </a>
-                        <span className="text-xs text-gray-400 mr-auto">
-                          {editor.articlesCount} مقال منشور
+                          {spec}
                         </span>
-                      </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={editor.socialLinks.twitter}
+                        className="p-2 rounded-lg bg-gray-50 hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
+                      >
+                        <Twitter className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={editor.socialLinks.linkedin}
+                        className="p-2 rounded-lg bg-gray-50 hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                      <span className="text-xs text-gray-400 mr-auto">
+                        {editor.articlesCount} مقال منشور
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -104,51 +91,41 @@ export function EditorsPage() {
               {editors.slice(2).map((editor) => (
                 <div
                   key={editor.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <ImageWithFallback
-                      src={editor.image}
-                      alt={editor.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f44]/70 to-transparent" />
-                    <div className="absolute bottom-0 right-0 left-0 p-4">
-                      <h3 className="text-white font-bold">{editor.name}</h3>
-                      <p className="text-[#c9a227] text-xs font-medium">{editor.title}</p>
-                    </div>
+                  <div className="pb-4 border-b border-gray-100 mb-4">
+                    <h3 className="text-[#0a1f44] font-bold">{editor.name}</h3>
+                    <p className="text-[#c9a227] text-xs font-medium">{editor.title}</p>
                   </div>
-                  <div className="p-5">
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
-                      {editor.bio}
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {editor.specialization.map((spec) => (
-                        <span
-                          key={spec}
-                          className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
-                        >
-                          {spec}
-                        </span>
-                      ))}
+                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
+                    {editor.bio}
+                  </p>
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {editor.specialization.map((spec) => (
+                      <span
+                        key={spec}
+                        className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                      >
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-50">
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={editor.socialLinks.twitter}
+                        className="p-1.5 rounded-lg hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
+                      >
+                        <Twitter className="w-3.5 h-3.5" />
+                      </a>
+                      <a
+                        href={editor.socialLinks.linkedin}
+                        className="p-1.5 rounded-lg hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" />
+                      </a>
                     </div>
-                    <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                      <div className="flex items-center gap-2">
-                        <a
-                          href={editor.socialLinks.twitter}
-                          className="p-1.5 rounded-lg hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
-                        >
-                          <Twitter className="w-3.5 h-3.5" />
-                        </a>
-                        <a
-                          href={editor.socialLinks.linkedin}
-                          className="p-1.5 rounded-lg hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
-                        >
-                          <Linkedin className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                      <span className="text-xs text-gray-400">{editor.articlesCount} مقال</span>
-                    </div>
+                    <span className="text-xs text-gray-400">{editor.articlesCount} مقال</span>
                   </div>
                 </div>
               ))}

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Play, TrendingUp, Star, ChevronLeft } from "lucide-react";
-import { articles, categories, featuredArticles, latestArticles, trendingArticles, IMAGES } from "../data/mockData";
+import { articles, categories, featuredArticles, latestArticles, trendingArticles, IMAGES, getArticlesByCategoryAndSubcategory } from "../data/mockData";
 import { ArticleCard } from "../components/ArticleCard";
 import { SectionHeader } from "../components/SectionHeader";
 import { NewsletterForm } from "../components/NewsletterForm";
@@ -8,6 +8,7 @@ import { NewsletterForm } from "../components/NewsletterForm";
 export function HomePage() {
   const heroArticle = featuredArticles[0];
   const secondaryFeatured = featuredArticles.slice(1, 3);
+  const investigationArticles = [...getArticlesByCategoryAndSubcategory("society", "investigations")].reverse();
 
   return (
     <div className="bg-[#f8fafc]">
@@ -44,12 +45,7 @@ export function HomePage() {
                       {article.title}
                     </h3>
                     <div className="flex items-center gap-2">
-                      <img
-                        src={article.author.avatar}
-                        alt={article.author.name}
-                        className="w-6 h-6 rounded-full object-cover"
-                      />
-                      <span className="text-xs text-gray-500">{article.author.name}</span>
+                      {/* <span className="text-xs text-gray-500">{article.author.name}</span> */}
                       <span className="text-xs text-gray-400 mr-auto">{article.date}</span>
                     </div>
                   </div>
@@ -194,6 +190,31 @@ export function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* INVESTIGATIONS */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <SectionHeader
+            title="التحقيقات"
+            subtitle="أقرب مكان لهذا العمل داخل الواجهة هو قسم تحقيقات نبض المجتمع"
+            accentColor="#10b981"
+            link="/category/society/investigations"
+          />
+
+          {investigationArticles.length > 0 && (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-7">
+                <ArticleCard article={investigationArticles[0]} variant="featured" />
+              </div>
+              <div className="lg:col-span-5 space-y-4">
+                {investigationArticles.slice(1, 3).map((article) => (
+                  <ArticleCard key={article.id} article={article} variant="horizontal" />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -6,7 +6,7 @@ interface Article {
   id: string;
   title: string;
   excerpt: string;
-  author: { name: string; avatar: string };
+  author: { name: string };
   date: string;
   readTime: string;
   category: string;
@@ -165,14 +165,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             {article.excerpt}
           </p>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <img
-                src={article.author.avatar}
-                alt={article.author.name}
-                className="w-7 h-7 rounded-full object-cover border-2 border-white/30"
-              />
-              <span className="text-white text-xs font-medium">{article.author.name}</span>
-            </div>
+            {/* <span className="text-white text-xs font-medium">{article.author.name}</span> */}
             <span className="text-blue-200 text-xs">{article.date}</span>
             <span className="flex items-center gap-1 text-blue-200 text-xs mr-auto">
               <Eye className="w-3 h-3" />
@@ -225,12 +218,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           {article.excerpt}
         </p>
         <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
-          <img
-            src={article.author.avatar}
-            alt={article.author.name}
-            className="w-7 h-7 rounded-full object-cover"
-          />
-          <span className="text-xs text-gray-600 font-medium flex-1">{article.author.name}</span>
+          {/* <span className="text-xs text-gray-600 font-medium flex-1">{article.author.name}</span> */}
           <span className="flex items-center gap-1 text-xs text-gray-400">
             <Clock className="w-3 h-3" />
             {article.readTime}

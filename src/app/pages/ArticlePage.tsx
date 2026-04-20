@@ -16,13 +16,101 @@ import {
   Quote,
   Bookmark,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+interface GalleryItem {
+  src: string;
+  caption?: string;
+}
+
+interface InlineMediaItem {
+  afterHeading: string;
+  src: string;
+  caption: string;
+}
+
+const articleContentSources: Record<string, string> = {
+  "1": "/data/project-writings-full.md",
+  "2": "/data/project-writings-full.md",
+  "3": "/data/lamis-full.md",
+  "4": "/data/lamis-full.md",
+  "5": "/data/lamis-full.md",
+  "6": "/data/mouda-full.md",
+  "7": "/data/juna-full.md",
+  "8": "/data/mian-full.md",
+  "9": "/data/juna-full.md",
+  "10": "/data/juna-full.md",
+  "11": "/data/majd-full.md",
+  "12": "/data/majd-full.md",
+  "13": "/data/majd-full.md",
+  "14": "/data/riman-full.md",
+  "15": "/data/riman-full.md",
+  "16": "/data/riman-full.md",
+  "17": "/data/riman-full.md",
+  "18": "/data/mian-full.md",
+  "20": "/data/investigation-full.md",
+  "21": "/data/digital-madinah-full.md",
+};
 
 export function ArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
   const article = getArticleById(articleId || "");
   const [copied, setCopied] = useState(false);
+  const [resolvedContent, setResolvedContent] = useState(article?.content ?? "");
+  const [isResolvingContent, setIsResolvingContent] = useState(false);
+  const isArticle21 = article?.id === "21";
+  const isInfographicArticle = article?.id === "19";
+  const articleContent = article?.content ?? "";
   const articleVideo = (article as { video?: string } | undefined)?.video;
+  const contentSource = (article as { contentSource?: string } | undefined)?.contentSource ?? (article ? articleContentSources[article.id] : undefined);
+  const rawGallery = (article as { gallery?: Array<string | GalleryItem> } | undefined)?.gallery ?? [];
+  const articleGallery: GalleryItem[] = rawGallery.map((item, idx) =>
+    typeof item === "string"
+      ? { src: item, caption: `صورة ${idx + 1}` }
+      : item
+  );
+  const articleInlineMedia = (article as { inlineMedia?: InlineMediaItem[] } | undefined)?.inlineMedia ?? [];
+
+  useEffect(() => {
+    let active = true;
+
+    const loadContent = async () => {
+      if (!article) {
+        return;
+      }
+
+      if (!contentSource) {
+        setResolvedContent(articleContent);
+        setIsResolvingContent(false);
+        return;
+      }
+
+      setIsResolvingContent(true);
+
+      try {
+        const response = await fetch(contentSource);
+        const markdown = await response.text();
+
+        if (active) {
+          setResolvedContent(markdown);
+        }
+      } catch {
+        if (active) {
+          setResolvedContent(articleContent);
+        }
+      } finally {
+        if (active) {
+          setIsResolvingContent(false);
+        }
+      }
+    };
+
+    loadContent();
+
+    return () => {
+      active = false;
+    };
+  }, [article, articleContent, contentSource, articleId]);
 
   if (!article) {
     return (
@@ -48,49 +136,166 @@ export function ArticlePage() {
 
   // Render article content with basic formatting
   const renderContent = (content: string) => {
-    const paragraphs = content.split("\n\n");
-    return paragraphs.map((para, index) => {
-      if (para.startsWith("**") && para.endsWith("**")) {
-        return (
-          <h3
-            key={index}
-            className="font-bold text-[#0a1f44] mt-8 mb-4"
-            style={{ fontSize: "1.2rem", lineHeight: "1.5" }}
-          >
-            {para.replace(/\*\*/g, "")}
-          </h3>
-        );
+    const normalizedContent = content.replace(/\r\n/g, "\n");
+    const lines = normalizedContent.split("\n");
+
+    const renderInlineText = (text: string) => {
+      if (!text.includes("**")) {
+        return text;
       }
-      if (para.includes("**")) {
-        const parts = para.split(/\*\*(.*?)\*\*/g);
-        return (
-          <p
-            key={index}
-            className="text-gray-700 leading-loose mb-6"
-            style={{ fontSize: "1.0625rem" }}
-          >
-            {parts.map((part, i) =>
-              i % 2 === 1 ? (
-                <strong key={i} className="font-bold text-[#0a1f44]">
-                  {part}
-                </strong>
-              ) : (
-                part
-              )
-            )}
-          </p>
-        );
-      }
+
+      const parts = text.split(/\*\*(.*?)\*\*/g);
+      return parts.map((part, partIndex) =>
+        partIndex % 2 === 1 ? (
+          <strong key={partIndex} className="font-bold text-[#0a1f44]">
+            {part}
+          </strong>
+        ) : (
+          <span key={partIndex}>{part}</span>
+        )
+      );
+    };
+
+    const renderHeadingBlock = (headingText: string, key: number, level: number) => {
+      const mediaForHeading = articleInlineMedia.filter((item) => item.afterHeading === headingText);
+      const headingClassName =
+        level === 1
+          ? "font-black text-[#0a1f44] mt-10 mb-4"
+          : level === 2
+            ? "font-bold text-[#0a1f44] mt-8 mb-4"
+            : "font-semibold text-[#0a1f44] mt-6 mb-3";
+
       return (
+        <div key={key}>
+          <h3
+            className={headingClassName}
+            style={{ fontSize: level === 1 ? "1.5rem" : level === 2 ? "1.2rem" : "1.05rem", lineHeight: "1.5" }}
+          >
+            {headingText}
+          </h3>
+          {mediaForHeading.map((media, mediaIndex) => {
+            const compactLayout = isArticle21
+              ? `w-full sm:w-40 md:w-44 ${mediaIndex % 2 === 0 ? "sm:float-left sm:ml-4" : "sm:float-right sm:mr-4"}`
+              : "mb-6";
+
+            return (
+              <figure
+                key={`${key}-${media.src}`}
+                className={`mb-4 rounded-lg overflow-hidden border border-gray-100 bg-white ${compactLayout}`}
+              >
+                <img
+                  src={media.src}
+                  alt={media.caption}
+                  className={`w-full object-cover ${isArticle21 ? "h-24 sm:h-28" : "h-44"}`}
+                />
+                <figcaption className="text-xs text-gray-500 px-3 py-2 bg-gray-50 leading-relaxed">
+                  {media.caption}
+                </figcaption>
+              </figure>
+            );
+          })}
+          {isArticle21 && mediaForHeading.length > 0 && <div className="clear-both" />}
+        </div>
+      );
+    };
+
+    const blocks: Array<React.ReactNode> = [];
+    let paragraphLines: string[] = [];
+    let listItems: string[] = [];
+
+    const flushParagraph = () => {
+      if (!paragraphLines.length) {
+        return;
+      }
+
+      const paragraphText = paragraphLines.join(" ").replace(/\s+/g, " ").trim();
+      paragraphLines = [];
+
+      if (!paragraphText) {
+        return;
+      }
+
+      blocks.push(
         <p
-          key={index}
+          key={`p-${blocks.length}`}
           className="text-gray-700 leading-loose mb-6"
           style={{ fontSize: "1.0625rem" }}
         >
-          {para}
+          {renderInlineText(paragraphText)}
         </p>
       );
+    };
+
+    const flushList = () => {
+      if (!listItems.length) {
+        return;
+      }
+
+      const items = listItems;
+      listItems = [];
+
+      blocks.push(
+        <ul key={`ul-${blocks.length}`} className="list-disc pr-6 space-y-2 text-gray-700 mb-6 leading-loose" style={{ fontSize: "1.0625rem" }}>
+          {items.map((item, itemIndex) => (
+            <li key={itemIndex}>{renderInlineText(item)}</li>
+          ))}
+        </ul>
+      );
+    };
+
+    lines.forEach((line, index) => {
+      const trimmedLine = line.trim();
+
+      if (!trimmedLine) {
+        flushParagraph();
+        flushList();
+        return;
+      }
+
+      if (trimmedLine === "---") {
+        flushParagraph();
+        flushList();
+        blocks.push(<hr key={`hr-${index}`} className="my-8 border-gray-200" />);
+        return;
+      }
+
+      const headingMatch = trimmedLine.match(/^(#{1,3})\s+(.+)$/);
+      if (headingMatch) {
+        flushParagraph();
+        flushList();
+        const headingLevel = headingMatch[1].length;
+        const headingText = headingMatch[2].trim();
+        blocks.push(renderHeadingBlock(headingText, index, headingLevel));
+        return;
+      }
+
+      const listMatch = trimmedLine.match(/^[-*]\s+(.+)$/);
+      if (listMatch) {
+        flushParagraph();
+        listItems.push(listMatch[1].trim());
+        return;
+      }
+
+      if (trimmedLine.startsWith(">")) {
+        flushParagraph();
+        flushList();
+        blocks.push(
+          <blockquote key={`quote-${index}`} className="relative border-r-4 border-[#c9a227] pr-6 my-8">
+            <p className="text-[#0a1f44] font-medium leading-relaxed" style={{ fontSize: "1.0625rem" }}>
+              {renderInlineText(trimmedLine.replace(/^>\s?/, ""))}
+            </p>
+          </blockquote>
+        );
+        return;
+      }
+
+      paragraphLines.push(trimmedLine);
     });
+
+    flushParagraph();
+    flushList();
+
+    return blocks;
   };
 
   return (
@@ -152,13 +357,8 @@ export function ArticlePage() {
                   {/* Author + meta */}
                   <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-gray-100">
                     <div className="flex items-center gap-3">
-                      <img
-                        src={article.author.avatar}
-                        alt={article.author.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-gray-100"
-                      />
                       <div>
-                        <p className="font-bold text-[#0a1f44] text-sm">{article.author.name}</p>
+                        {/* <p className="font-bold text-[#0a1f44] text-sm">{article.author.name}</p> */}
                         <p className="text-gray-500 text-xs">{article.author.title}</p>
                       </div>
                     </div>
@@ -177,13 +377,17 @@ export function ArticlePage() {
                 </div>
 
                 {/* Featured image */}
-                <div className="mx-6 sm:mx-10 mt-8 rounded-2xl overflow-hidden">
+                <div className={`mx-6 sm:mx-10 mt-8 rounded-2xl overflow-hidden ${isInfographicArticle ? "border border-gray-100 bg-[#eef2f5] p-3" : ""}`}>
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-72 sm:h-96 object-cover"
+                    className={
+                      isInfographicArticle
+                        ? "w-full max-w-md mx-auto h-auto object-contain"
+                        : `w-full object-cover ${isArticle21 ? "h-40 sm:h-52" : "h-72 sm:h-96"}`
+                    }
                   />
-                  <p className="text-xs text-gray-400 mt-2 mr-1">
+                  <p className={`text-xs text-gray-400 mt-2 ${isInfographicArticle ? "text-center" : "mr-1"}`}>
                     صورة توضيحية | © ترياد ٢٠٢٦
                   </p>
                 </div>
@@ -204,44 +408,94 @@ export function ArticlePage() {
 
                 {/* Article body */}
                 <div className="p-6 sm:p-10">
-                  {/* Excerpt highlight */}
-                  <div className="bg-[#f8fafc] border border-gray-100 rounded-2xl p-6 mb-8">
-                    <div className="flex gap-3">
-                      <Quote className="w-6 h-6 text-[#c9a227] flex-shrink-0 mt-1" />
-                      <p className="text-[#0a1f44] font-medium leading-relaxed">
-                        {article.excerpt}
-                      </p>
-                    </div>
-                  </div>
+                  {isArticle21 ? (
+                    <>
+                      {/* Excerpt highlight */}
+                      <div className="bg-[#f8fafc] border border-gray-100 rounded-2xl p-6 mb-8">
+                        <div className="flex gap-3">
+                          <Quote className="w-6 h-6 text-[#c9a227] flex-shrink-0 mt-1" />
+                          <p className="text-[#0a1f44] font-medium leading-relaxed">
+                            {article.excerpt}
+                          </p>
+                        </div>
+                      </div>
 
-                  {/* Main content */}
-                  <div className="prose-content">
-                    {renderContent(article.content)}
-                  </div>
+                      <div className="prose-content prose-content-article21">
+                        {isResolvingContent ? (
+                          <div className="text-gray-500 text-sm py-6">جاري تحميل النص الكامل...</div>
+                        ) : (
+                          renderContent(resolvedContent)
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Excerpt highlight */}
+                      <div className="bg-[#f8fafc] border border-gray-100 rounded-2xl p-6 mb-8">
+                        <div className="flex gap-3">
+                          <Quote className="w-6 h-6 text-[#c9a227] flex-shrink-0 mt-1" />
+                          <p className="text-[#0a1f44] font-medium leading-relaxed">
+                            {article.excerpt}
+                          </p>
+                        </div>
+                      </div>
 
-                  {/* Additional content for depth */}
-                  <div className="mt-8 space-y-6">
-                    <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
-                      وفي سياق متصل، يرى خبراء المجال أن الاهتمام المتزايد بهذا الموضوع يعكس تحولاً عميقاً في الوعي المجتمعي، وهو ما يستدعي مزيداً من الدراسة والتحليل لاستيعاب أبعاده المتشعبة وانعكاساته على المستقبل.
-                    </p>
+                      {/* Main content */}
+                      <div className="prose-content">
+                        {isResolvingContent ? (
+                          <div className="text-gray-500 text-sm py-6">جاري تحميل النص الكامل...</div>
+                        ) : (
+                          renderContent(resolvedContent)
+                        )}
+                      </div>
 
-                    {/* Pullquote */}
-                    <blockquote className="relative border-r-4 border-[#c9a227] pr-6 my-10">
-                      <p
-                        className="text-[#0a1f44] font-bold italic leading-relaxed"
-                        style={{ fontSize: "1.25rem" }}
-                      >
-                        "إن التحولات الكبرى في التاريخ لا تبدأ دائماً بأحداث صاخبة، بل كثيراً ما تنمو في صمت العقول المفكرة وهمس الأقلام الواعية."
-                      </p>
-                      <footer className="mt-3">
-                        <cite className="text-gray-500 text-sm not-italic">— {article.author.name}</cite>
-                      </footer>
-                    </blockquote>
+                      {articleGallery.length > 0 && (
+                        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {articleGallery.map((item, index) => (
+                            <figure
+                              key={`${item.src}-${index}`}
+                              className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm"
+                            >
+                              <img
+                                src={item.src}
+                                alt={item.caption ?? article.title}
+                                className="w-full h-56 sm:h-64 object-cover"
+                              />
+                              {item.caption && (
+                                <figcaption className="px-4 py-3 text-xs text-gray-500 bg-gray-50 leading-relaxed">
+                                  {item.caption}
+                                </figcaption>
+                              )}
+                            </figure>
+                          ))}
+                        </div>
+                      )}
 
-                    <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
-                      وختاماً، يظل هذا الملف أحد أبرز القضايا التي تشغل حيزاً واسعاً في النقاشات الأكاديمية والإعلامية، ونأمل أن تكون هذه القراءة إضافةً مثرية لفهم أبعاده والمشاركة في صياغة استجاباته المستقبلية.
-                    </p>
-                  </div>
+                      {/* Additional content for depth */}
+                      <div className="mt-8 space-y-6">
+                        <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
+                          وفي سياق متصل، يرى خبراء المجال أن الاهتمام المتزايد بهذا الموضوع يعكس تحولاً عميقاً في الوعي المجتمعي، وهو ما يستدعي مزيداً من الدراسة والتحليل لاستيعاب أبعاده المتشعبة وانعكاساته على المستقبل.
+                        </p>
+
+                        {/* Pullquote */}
+                        <blockquote className="relative border-r-4 border-[#c9a227] pr-6 my-10">
+                          <p
+                            className="text-[#0a1f44] font-bold italic leading-relaxed"
+                            style={{ fontSize: "1.25rem" }}
+                          >
+                            "إن التحولات الكبرى في التاريخ لا تبدأ دائماً بأحداث صاخبة، بل كثيراً ما تنمو في صمت العقول المفكرة وهمس الأقلام الواعية."
+                          </p>
+                          <footer className="mt-3">
+                            {/* <cite className="text-gray-500 text-sm not-italic">— {article.author.name}</cite> */}
+                          </footer>
+                        </blockquote>
+
+                        <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
+                          وختاماً، يظل هذا الملف أحد أبرز القضايا التي تشغل حيزاً واسعاً في النقاشات الأكاديمية والإعلامية، ونأمل أن تكون هذه القراءة إضافةً مثرية لفهم أبعاده والمشاركة في صياغة استجاباته المستقبلية.
+                        </p>
+                      </div>
+                    </>
+                  )}
 
                   {/* Tags */}
                   <div className="flex items-center gap-2 flex-wrap mt-10 pt-8 border-t border-gray-100">
@@ -291,13 +545,8 @@ export function ArticlePage() {
                   {/* Author bio */}
                   <div className="mt-8 p-6 bg-white border border-gray-100 rounded-2xl">
                     <div className="flex items-start gap-4">
-                      <img
-                        src={article.author.avatar}
-                        alt={article.author.name}
-                        className="w-16 h-16 rounded-2xl object-cover flex-shrink-0"
-                      />
                       <div>
-                        <p className="font-bold text-[#0a1f44] mb-1">{article.author.name}</p>
+                        {/* <p className="font-bold text-[#0a1f44] mb-1">{article.author.name}</p> */}
                         <p className="text-[#c9a227] text-sm font-medium mb-3">{article.author.title}</p>
                         <p className="text-gray-500 text-sm leading-relaxed">
                           محرر متخصص لدى ترياد، يتناول القضايا الثقافية والفكرية بعمق وموضوعية، ويسعى إلى تقديم محتوى يُثري الحوار العام.
