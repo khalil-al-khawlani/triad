@@ -29,29 +29,6 @@ interface InlineMediaItem {
   caption: string;
 }
 
-const articleContentSources: Record<string, string> = {
-  "1": "/data/project-writings-full.md",
-  "2": "/data/project-writings-full.md",
-  "3": "/data/lamis-full.md",
-  "4": "/data/lamis-full.md",
-  "5": "/data/lamis-full.md",
-  "6": "/data/mouda-full.md",
-  "7": "/data/juna-full.md",
-  "8": "/data/mian-full.md",
-  "9": "/data/juna-full.md",
-  "10": "/data/juna-full.md",
-  "11": "/data/majd-full.md",
-  "12": "/data/majd-full.md",
-  "13": "/data/majd-full.md",
-  "14": "/data/riman-full.md",
-  "15": "/data/riman-full.md",
-  "16": "/data/riman-full.md",
-  "17": "/data/riman-full.md",
-  "18": "/data/mian-full.md",
-  "20": "/data/investigation-full.md",
-  "21": "/data/digital-madinah-full.md",
-};
-
 export function ArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
   const article = getArticleById(articleId || "");
@@ -62,7 +39,7 @@ export function ArticlePage() {
   const isInfographicArticle = article?.id === "19";
   const articleContent = article?.content ?? "";
   const articleVideo = (article as { video?: string } | undefined)?.video;
-  const contentSource = (article as { contentSource?: string } | undefined)?.contentSource ?? (article ? articleContentSources[article.id] : undefined);
+  const contentSource = (article as { contentSource?: string } | undefined)?.contentSource;
   const rawGallery = (article as { gallery?: Array<string | GalleryItem> } | undefined)?.gallery ?? [];
   const articleGallery: GalleryItem[] = rawGallery.map((item, idx) =>
     typeof item === "string"

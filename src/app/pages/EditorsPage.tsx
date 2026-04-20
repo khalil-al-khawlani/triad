@@ -1,159 +1,39 @@
-import { Link } from "react-router";
 import { editors } from "../data/mockData";
-import { Twitter, Linkedin } from "lucide-react";
 
 export function EditorsPage() {
   return (
-    <div className="bg-[#f8fafc]">
-      {/* Hero */}
-      <div className="bg-[#0a1f44] py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center">
-            <span className="inline-block bg-[#c9a227] text-[#0a1f44] text-sm font-bold px-4 py-1.5 rounded-full mb-6">
-              فريق التحرير
-            </span>
-            <h1
-              className="text-white font-black mb-4"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: "1.3" }}
-            >
-              المحررون والكتّاب
-            </h1>
-            <p className="text-blue-200 max-w-2xl mx-auto leading-relaxed text-lg">
-              يضم فريق ترياد نخبة من الصحفيين والمحللين والكتّاب الذين يجمعون بين الخبرة الميدانية والعمق الفكري.
-            </p>
+    <div className="bg-[#efefef] min-h-screen pb-16">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24">
+        <div className="text-center mb-10">
+          <h1 className="text-[#111111] font-black mb-4" style={{ fontSize: "clamp(2rem, 6vw, 2.8rem)" }}>
+            الفريق
+          </h1>
+          <div className="flex justify-center" aria-hidden="true">
+            <svg width="150" height="24" viewBox="0 0 150 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 5L19 19L35 5L51 19L67 5L83 19L99 5L115 19L131 5L147 19" stroke="#6b4525" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         </div>
-      </div>
 
-      {/* Editors grid */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Chief editors */}
-          <div className="mb-14">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-1 h-8 rounded-full bg-[#c9a227]" />
-              <h2 className="font-black text-[#0a1f44]" style={{ fontSize: "1.375rem" }}>
-                القيادة التحريرية
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {editors.slice(0, 2).map((editor) => (
-                <div
-                  key={editor.id}
-                  className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className="flex-1">
-                    <h3 className="font-black text-[#0a1f44] text-lg mb-1">{editor.name}</h3>
-                    <p className="text-[#c9a227] font-bold text-sm mb-3">{editor.title}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{editor.bio}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {editor.specialization.map((spec) => (
-                        <span
-                          key={spec}
-                          className="px-3 py-1 bg-[#f8fafc] text-[#0a1f44] text-xs font-medium rounded-full border border-gray-100"
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <a
-                        href={editor.socialLinks.twitter}
-                        className="p-2 rounded-lg bg-gray-50 hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
-                      >
-                        <Twitter className="w-4 h-4" />
-                      </a>
-                      <a
-                        href={editor.socialLinks.linkedin}
-                        className="p-2 rounded-lg bg-gray-50 hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                      <span className="text-xs text-gray-400 mr-auto">
-                        {editor.articlesCount} مقال منشور
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Rest of editors */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-1 h-8 rounded-full bg-[#1e3a8a]" />
-              <h2 className="font-black text-[#0a1f44]" style={{ fontSize: "1.375rem" }}>
-                المحررون المتخصصون
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {editors.slice(2).map((editor) => (
-                <div
-                  key={editor.id}
-                  className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  <div className="pb-4 border-b border-gray-100 mb-4">
-                    <h3 className="text-[#0a1f44] font-bold">{editor.name}</h3>
-                    <p className="text-[#c9a227] text-xs font-medium">{editor.title}</p>
-                  </div>
-                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
-                    {editor.bio}
-                  </p>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {editor.specialization.map((spec) => (
-                      <span
-                        key={spec}
-                        className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={editor.socialLinks.twitter}
-                        className="p-1.5 rounded-lg hover:bg-[#1DA1F2] hover:text-white text-gray-400 transition-colors"
-                      >
-                        <Twitter className="w-3.5 h-3.5" />
-                      </a>
-                      <a
-                        href={editor.socialLinks.linkedin}
-                        className="p-1.5 rounded-lg hover:bg-[#0A66C2] hover:text-white text-gray-400 transition-colors"
-                      >
-                        <Linkedin className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                    <span className="text-xs text-gray-400">{editor.articlesCount} مقال</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Join team CTA */}
-      <section className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="bg-gradient-to-l from-[#1e3a8a] to-[#0a1f44] rounded-3xl p-10 sm:p-14 text-center">
-            <h2
-              className="text-white font-black mb-4"
-              style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)" }}
+        <div className="space-y-8">
+          {editors.map((editor) => (
+            <article
+              key={editor.id}
+              className="bg-white rounded-2xl shadow-sm border border-[#e3e3e3] pt-10 pb-12 px-6 text-center relative overflow-hidden"
             >
-              انضم إلى فريقنا
-            </h2>
-            <p className="text-blue-200 mb-8 leading-relaxed max-w-xl mx-auto">
-              نبحث دائماً عن أصوات جديدة وأقلام موهوبة تؤمن برسالة الصحافة العربية الراقية. إذا كانت لديك القصة، لدينا المنصة.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-block px-10 py-3.5 bg-[#c9a227] text-[#0a1f44] font-bold rounded-xl hover:bg-[#b8911f] transition-colors"
-            >
-              تواصل معنا
-            </Link>
-          </div>
+              <div className="absolute top-0 right-0 left-0 h-2 bg-[#6b4525]" />
+
+              <h2 className="text-[#111111] font-black mb-4" style={{ fontSize: "clamp(1.75rem, 5.5vw, 2.25rem)" }}>
+                {editor.name}
+              </h2>
+
+              <div className="w-40 h-1.5 bg-[#6b4525] mx-auto rounded-full mb-5" aria-hidden="true" />
+
+              <p className="text-[#727272] font-semibold" style={{ fontSize: "clamp(1.45rem, 4.5vw, 1.8rem)" }}>
+                {editor.title}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
     </div>
