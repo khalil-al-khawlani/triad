@@ -7,14 +7,9 @@ import {
 import { ReadingProgressBar } from "../components/ReadingProgressBar";
 import { ArticleCard } from "../components/ArticleCard";
 import {
-  Twitter,
-  Linkedin,
-  Link as LinkIcon,
   Clock,
   Eye,
   ChevronLeft,
-  Quote,
-  Bookmark,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -32,20 +27,9 @@ interface InlineMediaItem {
 export function ArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
   const article = getArticleById(articleId || "");
-  const [copied, setCopied] = useState(false);
-  const [resolvedContent, setResolvedContent] = useState(article?.content ?? "");
+  const [resolvedContent, setResolvedContent] = useState("");
   const [isResolvingContent, setIsResolvingContent] = useState(false);
-  const isArticle21 = article?.id === "21";
-  const isInfographicArticle = article?.id === "19";
-  const articleContent = article?.content ?? "";
-  const articleVideo = (article as { video?: string } | undefined)?.video;
   const contentSource = (article as { contentSource?: string } | undefined)?.contentSource;
-  const rawGallery = (article as { gallery?: Array<string | GalleryItem> } | undefined)?.gallery ?? [];
-  const articleGallery: GalleryItem[] = rawGallery.map((item, idx) =>
-    typeof item === "string"
-      ? { src: item, caption: `صورة ${idx + 1}` }
-      : item
-  );
   const articleInlineMedia = (article as { inlineMedia?: InlineMediaItem[] } | undefined)?.inlineMedia ?? [];
 
   useEffect(() => {
@@ -57,7 +41,7 @@ export function ArticlePage() {
       }
 
       if (!contentSource) {
-        setResolvedContent(articleContent);
+        setResolvedContent("");
         setIsResolvingContent(false);
         return;
       }
@@ -73,7 +57,7 @@ export function ArticlePage() {
         }
       } catch {
         if (active) {
-          setResolvedContent(articleContent);
+          setResolvedContent("");
         }
       } finally {
         if (active) {
@@ -87,7 +71,7 @@ export function ArticlePage() {
     return () => {
       active = false;
     };
-  }, [article, articleContent, contentSource, articleId]);
+  }, [article, contentSource, articleId]);
 
   if (!article) {
     return (
@@ -104,12 +88,6 @@ export function ArticlePage() {
   const relatedArticles = articles.filter(
     (a) => a.id !== article.id && a.category === article.category
   ).slice(0, 3);
-
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   // Render article content with basic formatting
   const renderContent = (content: string) => {
@@ -134,7 +112,6 @@ export function ArticlePage() {
     };
 
     const renderHeadingBlock = (headingText: string, key: number, level: number) => {
-      const mediaForHeading = articleInlineMedia.filter((item) => item.afterHeading === headingText);
       const headingClassName =
         level === 1
           ? "font-black text-[#0a1f44] mt-10 mb-4"
@@ -150,28 +127,6 @@ export function ArticlePage() {
           >
             {headingText}
           </h3>
-          {mediaForHeading.map((media, mediaIndex) => {
-            const compactLayout = isArticle21
-              ? `w-full sm:w-40 md:w-44 ${mediaIndex % 2 === 0 ? "sm:float-left sm:ml-4" : "sm:float-right sm:mr-4"}`
-              : "mb-6";
-
-            return (
-              <figure
-                key={`${key}-${media.src}`}
-                className={`mb-4 rounded-lg overflow-hidden border border-gray-100 bg-white ${compactLayout}`}
-              >
-                <img
-                  src={media.src}
-                  alt={media.caption}
-                  className={`w-full object-cover ${isArticle21 ? "h-24 sm:h-28" : "h-44"}`}
-                />
-                <figcaption className="text-xs text-gray-500 px-3 py-2 bg-gray-50 leading-relaxed">
-                  {media.caption}
-                </figcaption>
-              </figure>
-            );
-          })}
-          {isArticle21 && mediaForHeading.length > 0 && <div className="clear-both" />}
         </div>
       );
     };
@@ -179,6 +134,7 @@ export function ArticlePage() {
     const blocks: Array<React.ReactNode> = [];
     let paragraphLines: string[] = [];
     let listItems: string[] = [];
+    let imageCount = 0;
 
     const flushParagraph = () => {
       if (!paragraphLines.length) {
@@ -253,6 +209,33 @@ export function ArticlePage() {
         return;
       }
 
+      const imageMatch = trimmedLine.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (imageMatch) {
+        flushParagraph();
+        flushList();
+        const floatClass = imageCount % 2 === 0 ? "sm:float-left sm:ml-4" : "sm:float-right sm:mr-4";
+        imageCount += 1;
+        const imageAlt = imageMatch[1].trim() || article.title;
+        const imageSrc = imageMatch[2].trim();
+
+        blocks.push(
+          <figure
+            key={`img-${index}`}
+            className={`my-6 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm w-full sm:w-36 md:w-40 aspect-[4/6] ${floatClass}`}
+          >
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-full h-full object-cover"
+            />
+            <figcaption className="px-3 py-2 text-[11px] text-gray-500 bg-gray-50 leading-relaxed">
+              {imageAlt}
+            </figcaption>
+          </figure>
+        );
+        return;
+      }
+
       if (trimmedLine.startsWith(">")) {
         flushParagraph();
         flushList();
@@ -271,6 +254,10 @@ export function ArticlePage() {
 
     flushParagraph();
     flushList();
+
+    if (imageCount > 0) {
+      blocks.push(<div key="image-clear" className="clear-both" />);
+    }
 
     return blocks;
   };
@@ -353,184 +340,18 @@ export function ArticlePage() {
                   </div>
                 </div>
 
-                {/* Featured image */}
-                <div className={`mx-6 sm:mx-10 mt-8 rounded-2xl overflow-hidden ${isInfographicArticle ? "border border-gray-100 bg-[#eef2f5] p-3" : ""}`}>
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className={
-                      isInfographicArticle
-                        ? "w-full max-w-md mx-auto h-auto object-contain"
-                        : `w-full object-cover ${isArticle21 ? "h-40 sm:h-52" : "h-72 sm:h-96"}`
-                    }
-                  />
-                  <p className={`text-xs text-gray-400 mt-2 ${isInfographicArticle ? "text-center" : "mr-1"}`}>
-                    صورة توضيحية | © ترياد ٢٠٢٦
-                  </p>
-                </div>
-
-                {articleVideo && (
-                  <div className="mx-6 sm:mx-10 mt-6 rounded-2xl overflow-hidden border border-gray-100 bg-black">
-                    <video
-                      src={articleVideo}
-                      controls
-                      preload="metadata"
-                      className="w-full h-auto max-h-[520px]"
-                    />
-                    <p className="text-xs text-gray-400 mt-2 mr-1 bg-white px-2 py-1">
-                      فيديو المقابلة | © ترياد ٢٠٢٦
-                    </p>
-                  </div>
-                )}
-
                 {/* Article body */}
                 <div className="p-6 sm:p-10">
-                  {isArticle21 ? (
-                    <>
-                      {/* Excerpt highlight */}
-                      <div className="bg-[#f8fafc] border border-gray-100 rounded-2xl p-6 mb-8">
-                        <div className="flex gap-3">
-                          <Quote className="w-6 h-6 text-[#c9a227] flex-shrink-0 mt-1" />
-                          <p className="text-[#0a1f44] font-medium leading-relaxed">
-                            {article.excerpt}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="prose-content prose-content-article21">
-                        {isResolvingContent ? (
-                          <div className="text-gray-500 text-sm py-6">جاري تحميل النص الكامل...</div>
-                        ) : (
-                          renderContent(resolvedContent)
-                        )}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Excerpt highlight */}
-                      <div className="bg-[#f8fafc] border border-gray-100 rounded-2xl p-6 mb-8">
-                        <div className="flex gap-3">
-                          <Quote className="w-6 h-6 text-[#c9a227] flex-shrink-0 mt-1" />
-                          <p className="text-[#0a1f44] font-medium leading-relaxed">
-                            {article.excerpt}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Main content */}
-                      <div className="prose-content">
-                        {isResolvingContent ? (
-                          <div className="text-gray-500 text-sm py-6">جاري تحميل النص الكامل...</div>
-                        ) : (
-                          renderContent(resolvedContent)
-                        )}
-                      </div>
-
-                      {articleGallery.length > 0 && (
-                        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {articleGallery.map((item, index) => (
-                            <figure
-                              key={`${item.src}-${index}`}
-                              className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm"
-                            >
-                              <img
-                                src={item.src}
-                                alt={item.caption ?? article.title}
-                                className="w-full h-56 sm:h-64 object-cover"
-                              />
-                              {item.caption && (
-                                <figcaption className="px-4 py-3 text-xs text-gray-500 bg-gray-50 leading-relaxed">
-                                  {item.caption}
-                                </figcaption>
-                              )}
-                            </figure>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Additional content for depth */}
-                      <div className="mt-8 space-y-6">
-                        <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
-                          وفي سياق متصل، يرى خبراء المجال أن الاهتمام المتزايد بهذا الموضوع يعكس تحولاً عميقاً في الوعي المجتمعي، وهو ما يستدعي مزيداً من الدراسة والتحليل لاستيعاب أبعاده المتشعبة وانعكاساته على المستقبل.
-                        </p>
-
-                        {/* Pullquote */}
-                        <blockquote className="relative border-r-4 border-[#c9a227] pr-6 my-10">
-                          <p
-                            className="text-[#0a1f44] font-bold italic leading-relaxed"
-                            style={{ fontSize: "1.25rem" }}
-                          >
-                            "إن التحولات الكبرى في التاريخ لا تبدأ دائماً بأحداث صاخبة، بل كثيراً ما تنمو في صمت العقول المفكرة وهمس الأقلام الواعية."
-                          </p>
-                          <footer className="mt-3">
-                            {/* <cite className="text-gray-500 text-sm not-italic">— {article.author.name}</cite> */}
-                          </footer>
-                        </blockquote>
-
-                        <p className="text-gray-700 leading-loose" style={{ fontSize: "1.0625rem" }}>
-                          وختاماً، يظل هذا الملف أحد أبرز القضايا التي تشغل حيزاً واسعاً في النقاشات الأكاديمية والإعلامية، ونأمل أن تكون هذه القراءة إضافةً مثرية لفهم أبعاده والمشاركة في صياغة استجاباته المستقبلية.
-                        </p>
-                      </div>
-                    </>
-                  )}
-
-                  {/* Tags */}
-                  <div className="flex items-center gap-2 flex-wrap mt-10 pt-8 border-t border-gray-100">
-                    <span className="text-xs text-gray-500 ml-1">الوسوم:</span>
-                    {article.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full hover:bg-[#0a1f44] hover:text-white transition-colors cursor-pointer"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
+                  <div className="prose-content">
+                    {isResolvingContent ? (
+                      <div className="text-gray-500 text-sm py-6">جاري تحميل النص الكامل...</div>
+                    ) : resolvedContent.trim() ? (
+                      renderContent(resolvedContent)
+                    ) : (
+                      <div className="text-gray-500 text-sm py-6">لا يوجد ملف محتوى مرتبط بهذه المادة.</div>
+                    )}
                   </div>
 
-                  {/* Share section */}
-                  <div className="mt-8 p-6 bg-[#f8fafc] rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-[#0a1f44] mb-4 text-sm">شارك هذا المقال</h4>
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 px-4 py-2 bg-[#1DA1F2] text-white rounded-xl text-sm font-medium hover:opacity-90 transition-opacity"
-                      >
-                        <Twitter className="w-4 h-4" />
-                        تويتر
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 px-4 py-2 bg-[#0A66C2] text-white rounded-xl text-sm font-medium hover:opacity-90 transition-opacity"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                        لينكدإن
-                      </a>
-                      <button
-                        onClick={handleCopyLink}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-300 transition-colors"
-                      >
-                        <LinkIcon className="w-4 h-4" />
-                        {copied ? "تم النسخ!" : "نسخ الرابط"}
-                      </button>
-                      <button className="flex items-center gap-2 px-4 py-2 bg-[#0a1f44] text-white rounded-xl text-sm font-medium hover:bg-[#1e3a8a] transition-colors mr-auto">
-                        <Bookmark className="w-4 h-4" />
-                        حفظ
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Author bio */}
-                  <div className="mt-8 p-6 bg-white border border-gray-100 rounded-2xl">
-                    <div className="flex items-start gap-4">
-                      <div>
-                        {/* <p className="font-bold text-[#0a1f44] mb-1">{article.author.name}</p> */}
-                        <p className="text-[#c9a227] text-sm font-medium mb-3">{article.author.title}</p>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                          محرر متخصص لدى ترياد، يتناول القضايا الثقافية والفكرية بعمق وموضوعية، ويسعى إلى تقديم محتوى يُثري الحوار العام.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </article>

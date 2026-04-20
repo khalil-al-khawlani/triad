@@ -161,7 +161,7 @@ export function AboutPage() {
       </section>
 
       {/* Numbers */}
-      <section className="py-16 bg-gradient-to-l from-[#1e3a8a] to-[#0a1f44]">
+      {/* <section className="py-16 bg-gradient-to-l from-[#1e3a8a] to-[#0a1f44]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -182,10 +182,10 @@ export function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values */}
-      <section className="py-16 sm:py-20 bg-white">
+      {/* <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="font-black text-[#0a1f44] mb-3" style={{ fontSize: "1.75rem" }}>
@@ -210,7 +210,7 @@ export function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="bg-[#0a1f44] py-16">

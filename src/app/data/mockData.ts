@@ -18,6 +18,8 @@ export const IMAGES = {
   investigationsEditor: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
   podcastEditor: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
   threeDEditor: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
+  atheerEditor: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+  aryamEditor: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
   investigation1: "/data/investigation1.png",
   investigationExpertTariq: "/data/investigation-expert-tariq.png",
   investigationExpertAbdullah: "/data/investigation-expert-abdullah.png",
@@ -30,7 +32,7 @@ export const IMAGES = {
 };
 
 export type CategorySlug = "heritage" | "technology" | "society";
-export type SubcategorySlug = "reports" | "articles" | "investigations";
+export type SubcategorySlug = "reports" | "articles" | "investigations" | "news";
 
 export const categories = [
   {
@@ -69,6 +71,7 @@ export const subcategories = [
   { id: "reports", slug: "reports", name: "تقارير" },
   { id: "articles", slug: "articles", name: "مقالات" },
   { id: "investigations", slug: "investigations", name: "تحقيقات" },
+  { id: "news", slug: "news", name: "خبر صحفي" },
 ];
 
 export const articles = [
@@ -231,7 +234,7 @@ export const articles = [
     date: "١٨ أبريل ٢٠٢٦",
     readTime: "٥ دقائق",
     category: "technology",
-    subcategory: "reports",
+    subcategory: "news",
     contentSource: "/data/technology/news/creative-makers-news.md",
     image: IMAGES.brtMadinah,
     tags: ["المدينة المنورة", "شباب", "مبادرات", "محتوى رقمي"],
@@ -442,8 +445,8 @@ export const articles = [
 لم تعد جودة القهوة وحدها هي المعيار، بل تفاصيل التجربة كاملة: الإضاءة، الهدوء النسبي، وإمكانية التركيز والتواصل.
 
 **خلاصة**
+القهوة لم تعد مجرد مشروب، بل طقس يومي للاتزان والإنجاز، ومساحة يجد فيها الناس قدرًا من السكينة وسط إيقاع الحياة المتسارع.`, 
 
-القهوة لم تعد مجرد مشروب، بل طقس يومي للاتزان والإنجاز، ومساحة يجد فيها الناس قدرًا من السكينة وسط إيقاع الحياة المتسارع.`,
     author: {
       name: "مجد الشلالي",
       avatar: IMAGES.editor2,
@@ -552,7 +555,7 @@ export const articles = [
     date: "١٩ أبريل ٢٠٢٦",
     readTime: "٥ دقائق",
     category: "society",
-    subcategory: "reports",
+    subcategory: "news",
     contentSource: "/data/society/news/brt-news.md",
     image: IMAGES.brtMadinah,
     tags: ["BRT", "نقل عام", "المدينة المنورة", "بنية تحتية"],
@@ -670,7 +673,7 @@ export const articles = [
     date: "١٩ أبريل ٢٠٢٦",
     readTime: "٣ دقائق",
     category: "technology",
-    subcategory: "reports",
+    subcategory: "news",
     contentSource: "/data/technology/infographics/youth-content-infographic.md",
     image: "/data/infographic-youth-content.png",
     tags: ["إنفوجرافيك", "شباب", "تدريب", "محتوى رقمي"],
@@ -827,6 +830,214 @@ export const articles = [
     views: "٢,٩١٠",
     featured: false,
   },
+  {
+    id: "22",
+    slug: "reengineering-news-for-interactive-era",
+    title: "إعادة هندسة الخبر: لماذا لم يعد النص وحده كافياً؟",
+    subtitle: "مقال حول تحولات الخبر من السرد الخطي إلى التجربة متعددة الوسائط",
+    excerpt: "يفسر المقال كيف غيّر الإعلام التفاعلي شكل تلقي الخبر، ولماذا أصبح الدمج بين النص والصورة والبيانات شرطاً للمصداقية والتأثير.",
+    content: `في عصر الإعلام التفاعلي، لم يعد النص الطويل وحده قادراً على حمل الخبر إلى الجمهور بنفس الكفاءة القديمة.
+
+القارئ اليوم يتلقى المعلومة ضمن بيئة سريعة ومكتظة بالمحتوى البصري، ما يفرض على المؤسسات الصحفية إعادة هندسة طريقة العرض.
+
+تكامل النص مع الإنفوجرافيك والفيديو والبيانات لم يعد ترفاً تحريرياً، بل ضرورة لفهم أعمق وبناء ثقة مستدامة مع الجمهور.`,
+    author: {
+      name: "أثير الأحمدي",
+      avatar: IMAGES.atheerEditor,
+      title: "كاتبة مقال",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٧ دقائق",
+    category: "technology",
+    subcategory: "articles",
+    contentSource: "/data/technology/articles/reengineering-news-article.md",
+    image: IMAGES.newsroom,
+    tags: ["إعلام رقمي", "تحرير", "تفاعل", "مصداقية"],
+    views: "٤,٧٨٠",
+    featured: false,
+  },
+  {
+    id: "23",
+    slug: "urgent-news-and-cognitive-fatigue",
+    title: "إدمان اللحظة: كيف ترهق الأخبار العاجلة أدمغتنا؟",
+    subtitle: "تقرير يرصد أثر التدفق الإخباري الفوري على التركيز والصحة الذهنية",
+    excerpt: "يحلل التقرير كيف يقود التعرض المستمر للتحديثات العاجلة إلى تشتت الانتباه والضغط المعرفي، ويقدم توصيات للاستهلاك الواعي.",
+    content: `تحول الخبر الرقمي إلى تجربة لحظية متواصلة رفع وتيرة التوتر الذهني لدى المتلقي.
+
+التدفق السريع للإشعارات والأخبار العاجلة يقلل من فرص القراءة المتأنية، ويؤثر على القدرة على التركيز والاستيعاب العميق.
+
+الحل يكمن في بناء نمط متابعة متوازن يقوم على تحديد أوقات للاطلاع وتقليل التنبيهات والاعتماد على مصادر موثوقة.`,
+    author: {
+      name: "أثير الأحمدي",
+      avatar: IMAGES.atheerEditor,
+      title: "محررة تقارير",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٩ دقائق",
+    category: "society",
+    subcategory: "reports",
+    contentSource: "/data/society/reports/urgent-news-brain-report.md",
+    image: IMAGES.breaking,
+    tags: ["عاجل", "إجهاد ذهني", "وعي إعلامي", "تلقي الأخبار"],
+    views: "٤,٢٥٠",
+    featured: false,
+  },
+  {
+    id: "24",
+    slug: "3d-technology-for-traffic-accident-reconstruction",
+    title: "هل تنهي تقنية 3D صراعات الحوادث المرورية في طرقنا؟",
+    subtitle: "خبر عن توظيف التمثيل ثلاثي الأبعاد لتسريع التحقيقات المرورية ورفع دقتها",
+    excerpt: "تتوسع تطبيقات المسح الليزري والمحاكاة ثلاثية الأبعاد في توثيق الحوادث بدقة أعلى، بما يساعد على اختصار الوقت وتقليل الخلافات.",
+    content: `تقدم تقنيات إعادة تمثيل الحوادث ثلاثية الأبعاد بديلاً أكثر دقة من إجراءات التوثيق التقليدية.
+
+تسهم هذه الأدوات في حفظ موقع الحادث سريعاً، ورفع كفاءة التقدير الفني، وتسريع إعادة فتح الطريق.
+
+الاعتماد على البيانات الفيزيائية في التحليل يحد من الاجتهادات الشخصية ويعزز عدالة النتائج.`,
+    author: {
+      name: "أثير الأحمدي",
+      avatar: IMAGES.atheerEditor,
+      title: "محررة خبر",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٥ دقائق",
+    category: "technology",
+    subcategory: "news",
+    contentSource: "/data/technology/news/3d-traffic-accidents-news.md",
+    image: IMAGES.techWorkspace,
+    tags: ["3D", "حوادث", "مرور", "تحول رقمي"],
+    views: "٣,٩٨٠",
+    featured: false,
+  },
+  {
+    id: "25",
+    slug: "madinah-digital-services-gap-investigation",
+    title: "التحول الرقمي في المدينة المنورة... بين سرعة الخدمة واتساع الفجوة الرقمية",
+    subtitle: "تحقيق عن مكاسب التحول الرقمي وتحديات الوصول العادل للخدمة",
+    excerpt: "يوثق التحقيق أثر الخدمات الرقمية في تسريع الإنجاز، مقابل استمرار تحديات الاستخدام لدى بعض الفئات، خصوصاً كبار السن.",
+    content: `تُظهر المدينة المنورة تقدماً واضحاً في رقمنة الخدمات وتحسين كفاءة الإنجاز.
+
+لكن التجربة تكشف أيضاً فجوة في سهولة الوصول بين الفئات، ما يتطلب تبسيط الواجهات ومرافقة المستخدمين الأقل خبرة.
+
+نجاح التحول الرقمي لا يقاس بسرعة الخدمة فقط، بل بشموليتها وعدالتها.`,
+    author: {
+      name: "أثير الأحمدي",
+      avatar: IMAGES.atheerEditor,
+      title: "محررة تحقيقات",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "١١ دقيقة",
+    category: "society",
+    subcategory: "investigations",
+    contentSource: "/data/society/investigations/madinah-digital-gap-investigation-atheer.md",
+    image: IMAGES.digitalMadinahCover,
+    tags: ["تحول رقمي", "فجوة رقمية", "المدينة المنورة", "تحقيق"],
+    views: "٣,٤٢٠",
+    featured: false,
+  },
+  {
+    id: "26",
+    slug: "live-family-album-3d-memory-experience",
+    title: "ألبوم العائلة الحي: هل تنهي التقنية ثلاثية الأبعاد زمن الصورة المطبوعة؟",
+    subtitle: "مقال عن تحولات حفظ الذكريات بين الورقي والمجسم الرقمي",
+    excerpt: "يناقش المقال كيف أعادت تقنيات العرض ثلاثي الأبعاد تعريف الألبوم العائلي، مع بقاء قيمة الصورة الورقية في الذاكرة الوجدانية.",
+    content: `تقنيات العرض المجسم فتحت شكلاً جديداً لتجربة الصور العائلية، وجعلت استعادة الذكرى أكثر قرباً وتفاعلاً.
+
+ورغم هذا التحول، ما زالت الصورة المطبوعة تحافظ على حضور عاطفي وتاريخي يصعب استبداله بالكامل.
+
+المستقبل الأقرب هو التعايش بين أصالة الورق ومرونة التقنية.`,
+    author: {
+      name: "أريام الحربي",
+      avatar: IMAGES.aryamEditor,
+      title: "كاتبة مقال",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٦ دقائق",
+    category: "heritage",
+    subcategory: "articles",
+    contentSource: "/data/heritage/articles/live-family-album-3d-article.md",
+    image: IMAGES.heritage,
+    tags: ["ذكريات", "ألبوم", "3D", "صورة ورقية"],
+    views: "٣,١٩٠",
+    featured: false,
+  },
+  {
+    id: "27",
+    slug: "remote-diwaniya-and-3d-social-return",
+    title: "ديوانية عن بعد: كيف أعاد البعد الثالث إحياء تقاليد الحي العتيق؟",
+    subtitle: "تقرير عن توظيف التقنيات المجسمة في استعادة طقس المجالس الاجتماعية",
+    excerpt: "يرصد التقرير كيف ساعدت تقنيات البعد الثالث على إعادة تشكيل اللقاءات الاجتماعية التقليدية بصيغة رقمية أكثر قرباً من التفاعل الواقعي.",
+    content: `أسهمت تقنيات الهولوغرام والواقع الافتراضي في تقديم تجربة اجتماعية أقرب إلى الحضور الفعلي مقارنة بالاتصال المرئي التقليدي.
+
+هذا الاستخدام يعزز فكرة أن التقنية يمكن أن تكون حاضنة للتراث الاجتماعي لا بديلاً عنه.
+
+التجربة تؤكد أن تحديث الطقس الاجتماعي ممكن دون فقد روحه.`,
+    author: {
+      name: "أريام الحربي",
+      avatar: IMAGES.aryamEditor,
+      title: "محررة تقارير",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٦ دقائق",
+    category: "society",
+    subcategory: "reports",
+    contentSource: "/data/society/reports/remote-diwaniya-3d-report.md",
+    image: IMAGES.society,
+    tags: ["ديوانية", "تراث", "واقع افتراضي", "3D"],
+    views: "٢,٧٦٠",
+    featured: false,
+  },
+  {
+    id: "28",
+    slug: "hologram-wedding-presence-across-distance",
+    title: "بين لندن وأونتاريو: صورة مجسمة تتجاوز المسافة وتجمع وصيفة بعروسها",
+    subtitle: "خبر عن مشاركة وصيفة العروس عبر تقنية الهولوغرام في حفل زفاف",
+    excerpt: "أظهرت الواقعة كيف يمكن لتقنيات الصورة المجسمة أن تعوض غياب الحضور الجسدي وتوفر تجربة اجتماعية أقرب للواقع.",
+    content: `شهد حفل زفاف في كندا مشاركة وصيفة العروس من لندن عبر تقنية الصورة المجسمة.
+
+الظهور الهولوغرافي منح الحضور تجربة أقرب إلى التواجد الحقيقي، وتجاوز فكرة الاتصال المرئي المعتاد.
+
+تؤكد هذه الحالة توسع التطبيقات الإنسانية للتقنية خارج الاستخدامات الاستعراضية.`,
+    author: {
+      name: "أريام الحربي",
+      avatar: IMAGES.aryamEditor,
+      title: "محررة خبر",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٤ دقائق",
+    category: "technology",
+    subcategory: "news",
+    contentSource: "/data/technology/news/hologram-bridal-companion-news.md",
+    image: IMAGES.hero,
+    tags: ["هولوغرام", "زفاف", "حضور عن بعد", "تقنية"],
+    views: "٢,٤٢٠",
+    featured: false,
+  },
+  {
+    id: "29",
+    slug: "3d-news-infographic-future-of-storytelling",
+    title: "إنفوجرافيك: كيف يعيد المحتوى ثلاثي الأبعاد تشكيل الخبر؟",
+    subtitle: "ملخص بصري لأثر تقنيات 3D على صناعة القصة الصحفية",
+    excerpt: "يعرض هذا الإنفوجرافيك أهم محاور التحول من الخبر النصي إلى الخبر متعدد الوسائط باستخدام التقنيات المجسمة.",
+    content: `يعرض الموضوع بصيغة إنفوجرافيك أبرز محاور استخدام تقنيات 3D والهولوغرام في السرد الصحفي.
+
+يركز على التحول في طريقة العرض، وتسريع الفهم البصري، وتوسيع إمكانيات التغطية عن بعد.
+
+الهدف هو تقديم نظرة سريعة على أثر هذه الأدوات في مستقبل الخبر.`,
+    author: {
+      name: "أريام الحربي",
+      avatar: IMAGES.aryamEditor,
+      title: "محررة إنفوجرافيك",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٣ دقائق",
+    category: "technology",
+    subcategory: "news",
+    contentSource: "/data/technology/infographics/3d-news-infographic.md",
+    image: "/data/infographic-youth-content.png",
+    tags: ["إنفوجرافيك", "3D", "إعلام", "تحول رقمي"],
+    views: "١,٩٤٠",
+    featured: false,
+  },
 ];
 
 export const editors = [
@@ -898,6 +1109,26 @@ export const editors = [
     image: IMAGES.threeDEditor,
     specialization: ["ثري دي", "التفاعل", "التجربة البصرية"],
     articlesCount: 39,
+    socialLinks: { twitter: "#", linkedin: "#" },
+  },
+  {
+    id: "8",
+    name: "أثير الأحمدي",
+    title: "محررة متعددة الأنماط",
+    bio: "تغطي أنماطاً صحفية متنوعة بين المقال والتقرير والخبر والتحقيق، مع اهتمام خاص بقضايا التحول الرقمي وتطوير السرد التفاعلي.",
+    image: IMAGES.atheerEditor,
+    specialization: ["المقال", "التقرير", "التحقيق", "الخبر"],
+    articlesCount: 4,
+    socialLinks: { twitter: "#", linkedin: "#" },
+  },
+  {
+    id: "9",
+    name: "أريام الحربي",
+    title: "محررة السرد البصري",
+    bio: "تركز على قصص التقنية البصرية والبعد الثالث، وتعمل على تحويل الأفكار الاجتماعية إلى مواد صحفية مختصرة وواضحة.",
+    image: IMAGES.aryamEditor,
+    specialization: ["المقال", "التقرير", "الخبر", "الإنفوجرافيك"],
+    articlesCount: 4,
     socialLinks: { twitter: "#", linkedin: "#" },
   },
 ];

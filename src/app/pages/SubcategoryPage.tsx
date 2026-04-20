@@ -9,12 +9,13 @@ import {
 import { ArticleCard } from "../components/ArticleCard";
 import { SectionHeader } from "../components/SectionHeader";
 import { NewsletterForm } from "../components/NewsletterForm";
-import { ChevronLeft, FileText, Newspaper, Search as SearchIcon } from "lucide-react";
+import { ChevronLeft, FileText, Newspaper, Search as SearchIcon, Megaphone } from "lucide-react";
 
 const subcategoryIcons: Record<string, React.ReactNode> = {
   reports: <FileText className="w-5 h-5" />,
   articles: <Newspaper className="w-5 h-5" />,
   investigations: <SearchIcon className="w-5 h-5" />,
+  news: <Megaphone className="w-5 h-5" />,
 };
 
 export function SubcategoryPage() {
