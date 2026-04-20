@@ -27,9 +27,7 @@ export function SubcategoryPage() {
   const category = getCategoryBySlug(categorySlug || "");
   const subcategory = getSubcategoryBySlug(subcategorySlug || "");
   const subcatArticles = getArticlesByCategoryAndSubcategory(categorySlug || "", subcategorySlug || "");
-
-  // Fallback: if no matching articles, show all articles for demonstration
-  const displayArticles = subcatArticles.length > 0 ? subcatArticles : articles.slice(0, 4);
+  const displayArticles = subcatArticles;
 
   if (!category || !subcategory) {
     return (
@@ -193,7 +191,10 @@ export function SubcategoryPage() {
                   مقالات ذات صلة
                 </h3>
                 <div className="space-y-1">
-                  {articles.slice(2, 5).map((article) => (
+                  {articles
+                    .filter((article) => article.category === categorySlug && article.subcategory !== subcategorySlug)
+                    .slice(0, 3)
+                    .map((article) => (
                     <ArticleCard key={article.id} article={article} variant="horizontal" />
                   ))}
                 </div>

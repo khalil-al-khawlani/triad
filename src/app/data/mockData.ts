@@ -171,7 +171,7 @@ export const articles = [
     readTime: "٩ دقائق",
     category: "technology",
     subcategory: "reports",
-    contentSource: "/data/technology/reports/creator-journey-report.md",
+    contentSource: "/data/reports/creator-journey-report.md",
     image: IMAGES.techWorkspace,
     tags: ["صناعة محتوى", "منصات", "إبداع", "تحليل أداء"],
     views: "١٦,٩٣٢",
@@ -205,7 +205,7 @@ export const articles = [
     readTime: "٧ دقائق",
     category: "technology",
     subcategory: "articles",
-    contentSource: "/data/technology/articles/platform-influence-article.md",
+    contentSource: "/data/articles/platform-influence-article.md",
     image: IMAGES.hero,
     tags: ["تأثير", "منصات رقمية", "مصداقية", "جمهور"],
     views: "١١,٦٨٠",
@@ -345,7 +345,7 @@ export const articles = [
     readTime: "٨ دقائق",
     category: "society",
     subcategory: "reports",
-    contentSource: "/data/society/reports/reading-speed-report.md",
+    contentSource: "/data/reports/reading-speed-report.md",
     image: IMAGES.newsroom,
     tags: ["قراءة", "شباب", "ثقافة", "تفكير نقدي"],
     views: "١٢,٦٢٠",
@@ -422,7 +422,7 @@ export const articles = [
     readTime: "٩ دقائق",
     category: "heritage",
     subcategory: "investigations",
-    contentSource: "/data/heritage/investigations/old-alleys-investigation.md",
+    contentSource: "/data/investigations/old-alleys-investigation.md",
     image: IMAGES.heritage,
     tags: ["تحقيق", "ترميم", "أزقة", "المدينة"],
     views: "٧,٥٨١",
@@ -490,7 +490,7 @@ export const articles = [
     readTime: "٨ دقائق",
     category: "society",
     subcategory: "reports",
-    contentSource: "/data/society/reports/digital-relationships-report.md",
+    contentSource: "/data/reports/digital-relationships-report.md",
     image: IMAGES.technology,
     gallery: [
       {
@@ -530,7 +530,7 @@ export const articles = [
     readTime: "٧ دقائق",
     category: "society",
     subcategory: "articles",
-    contentSource: "/data/society/articles/phones-relationships-article.md",
+    contentSource: "/data/articles/phones-relationships-article.md",
     image: IMAGES.society,
     tags: ["هواتف", "علاقات", "حضور", "وعي رقمي"],
     views: "٩,٢١٠",
@@ -556,7 +556,7 @@ export const articles = [
     readTime: "٥ دقائق",
     category: "society",
     subcategory: "news",
-    contentSource: "/data/society/news/brt-news.md",
+    contentSource: "/data/news/brt-news.md",
     image: IMAGES.brtMadinah,
     tags: ["BRT", "نقل عام", "المدينة المنورة", "بنية تحتية"],
     views: "٨,٤٧٠",
@@ -609,7 +609,7 @@ export const articles = [
     readTime: "٥ دقائق",
     category: "heritage",
     subcategory: "reports",
-    contentSource: "/data/heritage/reports/prophets-mosque-report.md",
+    contentSource: "/data/reports/prophets-mosque-report.md",
     image: "/data/spiritual-atmosphere-mosque.png",
     tags: ["المسجد النبوي", "رمضان", "خدمات", "زوار"],
     views: "٩,٨٣٠",
@@ -686,7 +686,7 @@ export const articles = [
     title: "جيل الشاشات: حين تتحول المتعة إلى إدمان صامت",
     subtitle: "تحقيق يرصد أثر الإفراط في استخدام الأجهزة على الأطفال والمراهقين",
     excerpt: "يربط هذا التحقيق بين ارتفاع ساعات التعرض للشاشات وتراجع التركيز والتحصيل الدراسي وازدياد الضغوط النفسية، مع شهادات مختصين وأسر وتجارب ميدانية.",
-    contentSource: "/data/society/investigations/digital-addiction-investigation.md",
+    contentSource: "/data/investigations/digital-addiction-investigation.md",
     content: `شهد العالم في السنوات الأخيرة زيادة ملحوظة في استعمال الأجهزة الإلكترونية، خصوصًا بين الأطفال والمراهقين. ومع التحول الرقمي السريع، أصبحت الشاشات جزءًا يوميًا من الحياة، ما فتح بابًا واسعًا للتساؤل حول أثرها على السلوك والتعلم والصحة النفسية.
 
 **أرقام تتجاوز الحدود الصحية**
@@ -785,7 +785,7 @@ export const articles = [
     category: "technology",
     subcategory: "investigations",
     image: IMAGES.digitalMadinahCover,
-    contentSource: "/data/society/investigations/madinah-digital-transformation-investigation.md",
+    contentSource: "/data/investigations/madinah-digital-transformation-investigation.md",
     inlineMedia: [
       {
         afterHeading: "المدينة نحو الذكاء الرقمي",
@@ -1090,6 +1090,34 @@ export const articles = [
     views: "٢,٩٨٠",
     featured: false,
   },
+  {
+    id: "1001",
+    slug: "heritage-renovation-news",
+    title: "إطلاق مشروع ترميم الأزقة التاريخية في المدينة المنورة",
+    subtitle: "جهود جديدة للحفاظ على التراث العمراني وتعزيز الهوية الثقافية",
+    excerpt: "أعلنت هيئة تطوير المدينة عن مشروع لترميم الأزقة التاريخية في قلب المدينة، ضمن جهودها للحفاظ على التراث العمراني وتعزيز الهوية الثقافية للمنطقة.",
+    content: `أعلنت هيئة تطوير منطقة المدينة المنورة عن بدء تنفيذ مشروع ترميم الأزقة التاريخية في قلب المدينة، ضمن جهودها للحفاظ على التراث العمراني وتعزيز الهوية الثقافية للمنطقة.
+
+يشمل المشروع إعادة تأهيل عدد من الأزقة القديمة، وترميم البيوت الطينية والأسواق التقليدية، مع الحفاظ على الطابع المعماري الأصيل للمدينة. ويهدف المشروع إلى تحويل هذه الأزقة إلى وجهات سياحية وثقافية، تروي للزوار حكايات الماضي وتبرز عمق التراث المحلي.
+
+وأكدت الهيئة أن أعمال الترميم ستتم وفق معايير دقيقة تضمن استدامة المواقع التاريخية، مع إشراك المجتمع المحلي في عمليات التطوير، وتوفير فرص عمل جديدة في مجالات الحرف اليدوية والإرشاد السياحي.
+
+ويأتي هذا المشروع في إطار رؤية المملكة 2030، التي تضع صون التراث الوطني وتعزيز الهوية في مقدمة أولوياتها، وتعمل على تحويل المواقع التاريخية إلى روافد اقتصادية وثقافية مستدامة.`,
+    author: {
+      name: "جنى أبو عنق",
+      avatar: IMAGES.opinionEditor,
+      title: "محررة مقالات",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٥ دقائق",
+    category: "heritage",
+    subcategory: "news",
+    contentSource: "/data/heritage/news/heritage-renovation-news.md",
+    image: IMAGES.heritage,
+    tags: ["تراث", "المدينة المنورة", "ترميم", "هوية"],
+    views: "١٬٠٠٠",
+    featured: false,
+  },
 ];
 
 export const editors = [
@@ -1169,7 +1197,7 @@ export const editors = [
     title: "محررة متعددة الأنماط",
     bio: "تغطي أنماطاً صحفية متنوعة بين المقال والتقرير والخبر والتحقيق، مع اهتمام خاص بقضايا التحول الرقمي وتطوير السرد التفاعلي.",
     image: IMAGES.atheerEditor,
-    specialization: ["المقال", "التقرير", "التحقيق", "الخبر"],
+    specialization: ["المقال", "التقرير", "الخبر", "التحقيق"],
     articlesCount: 4,
     socialLinks: { twitter: "#", linkedin: "#" },
   },
