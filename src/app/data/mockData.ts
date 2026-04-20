@@ -1038,6 +1038,58 @@ export const articles = [
     views: "١,٩٤٠",
     featured: false,
   },
+  {
+    id: "30",
+    slug: "text-image-audio-news-consumption-youth",
+    title: "بين النص والصورة والصوت: كيف يفضل شباب المدن متابعة الأخبار؟",
+    subtitle: "تقرير عن تحولات تلقي الأخبار لدى الشباب في البيئة الرقمية",
+    excerpt: "يرصد التقرير انتقال الشباب من النمط التقليدي إلى صيغ خبرية متعددة الوسائط، مع بقاء الموثوقية معيارًا حاسمًا في الاختيار.",
+    content: `تغيرت طريقة متابعة الأخبار لدى الشباب بشكل واضح مع صعود المنصات الرقمية التي تجمع بين النص والصورة والصوت.
+
+تشير المؤشرات إلى اعتماد متزايد على الفيديو القصير والبودكاست، مع استمرار حضور النص في التحليل العميق.
+
+المعادلة الأكثر شيوعًا أصبحت الجمع بين سرعة المتابعة وعمق الفهم عبر مصادر موثوقة.`,
+    author: {
+      name: "مودة الجيادي",
+      avatar: IMAGES.editor1,
+      title: "محررة إعلام رقمي",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٧ دقائق",
+    category: "society",
+    subcategory: "reports",
+    contentSource: "/data/society/reports/text-image-audio-news-consumption-report.md",
+    image: IMAGES.newsroom,
+    tags: ["شباب", "استهلاك الأخبار", "فيديو", "بودكاست"],
+    views: "٣,٣٢٠",
+    featured: false,
+  },
+  {
+    id: "31",
+    slug: "news-format-cognition-or-attention",
+    title: "هل التطور في شكل الخبر يعزز الإدراك أم يكتفي بجذب الانتباه؟",
+    subtitle: "مقال يناقش التوازن بين الإبهار البصري وعمق المعلومة",
+    excerpt: "يناقش المقال أثر تطور صيغ الخبر على فهم الجمهور، وكيف يمكن أن يتحول الشكل إلى قيمة معرفية أو إلى عبء إذا طغى على المضمون.",
+    content: `لم يعد الخبر نصًا فقط، بل تجربة بصرية وسمعية متعددة العناصر.
+
+هذا التطور قد يعزز الإدراك حين يُستخدم بوعي، لكنه قد يختزل المعنى إذا أصبح الهدف هو الجذب السريع فقط.
+
+المطلوب هو توازن بين الإبداع المهني ودقة الرسالة الإعلامية.`,
+    author: {
+      name: "مودة الجيادي",
+      avatar: IMAGES.editor1,
+      title: "محررة إعلام رقمي",
+    },
+    date: "٢٠ أبريل ٢٠٢٦",
+    readTime: "٦ دقائق",
+    category: "society",
+    subcategory: "articles",
+    contentSource: "/data/society/articles/news-format-cognition-article.md",
+    image: IMAGES.hero,
+    tags: ["شكل الخبر", "إدراك", "جذب الانتباه", "إعلام رقمي"],
+    views: "٢,٩٨٠",
+    featured: false,
+  },
 ];
 
 export const editors = [
