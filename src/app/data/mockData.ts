@@ -29,6 +29,8 @@ export const IMAGES = {
   digitalMadinahEasyLife: "/data/digital-madinah-easy-life.png",
   digitalMadinahIhab: "/data/digital-madinah-ihab.png",
   digitalMadinahWalaa: "/data/digital-madinah-walaa.png",
+  readingSpeed: "/data/القراءاه في زمن السرعة.png",
+  creatorJourney: "/data/الفكرة الى الانتشار رحلة صانع محتوى.png",
 };
 
 export type CategorySlug = "heritage" | "technology" | "society";
@@ -89,7 +91,7 @@ export const articles = [
     },
     date: "١٣ أبريل ٢٠٢٦",
     readTime: "٧ دقائق",
-    category: "society",
+    category: "technology",
     subcategory: "reports",
     contentSource: "/data/society/reports/digital-mind-sedation-report.md",
     image: IMAGES.breaking,
@@ -111,10 +113,10 @@ export const articles = [
     },
     date: "١٣ أبريل ٢٠٢٦",
     readTime: "٦ دقائق",
-    category: "society",
+    category: "technology",
     subcategory: "articles",
     contentSource: "/data/society/articles/news-framing-article.md",
-    image: IMAGES.newsroom,
+    image: IMAGES.techWorkspace,
     tags: ["تحرير", "رأي عام", "وسائل إعلام", "تحليل"],
     views: "١٤,٢٠٥",
     featured: true,
@@ -136,7 +138,7 @@ export const articles = [
     category: "technology",
     subcategory: "reports",
     contentSource: "/data/reports/creator-journey-report.md",
-    image: IMAGES.techWorkspace,
+    image: IMAGES.creatorJourney,
     tags: ["صناعة محتوى", "منصات", "إبداع", "تحليل أداء"],
     views: "١٦,٩٣٢",
     featured: false,
@@ -193,14 +195,14 @@ export const articles = [
     excerpt: "تشير بيانات حديثة إلى أن نسبة كبيرة من الشباب تفضل البودكاست لمرونته وعمقه، في وقت يتراجع فيه الاعتماد على النمط الإخباري التقليدي.",
     // ...خاصية content محذوفة
     author: {
-      name: "مودة الجيادي",
+      name: "موده حسن سعيد الجيادي",
       avatar: IMAGES.editor1,
       title: "محررة إعلام رقمي",
     },
     date: "١٨ أبريل ٢٠٢٦",
     readTime: "٨ دقائق",
     category: "society",
-    subcategory: "reports",
+    subcategory: "news",
     contentSource: "/data/society/reports/local-podcast-report.md",
     image: IMAGES.techWorkspace,
     tags: ["بودكاست", "شباب", "إعلام رقمي", "تحليل"],
@@ -210,7 +212,7 @@ export const articles = [
   {
     id: "7",
     slug: "madinah-landmarks-tell-the-seerah",
-    title: "معالم تروي السيرة: المدينة المنورة بين قدسية الأثر وحداثة التنظيم",
+    title: "معالمُ تروي السيرة",
     subtitle: "قراءة في إحياء معالم السيرة النبوية وتحويلها إلى تجربة معرفية حيّة",
     excerpt: "لم تعد معالم المدينة المنورة مجرد مواقع تاريخية ساكنة، بل أصبحت تجربة تفاعلية تجمع بين روح المكان وتطوير الخدمات بما يعزز حضور السيرة في وجدان الزائر.",
     // ...خاصية content محذوفة
@@ -232,7 +234,7 @@ export const articles = [
   {
     id: "8",
     slug: "reading-in-the-age-of-speed",
-    title: "القراءة في زمن السرعة: هل ما زالت لها مكانة بين الشباب؟",
+    title: "القراءة في زمن السرعة.. هل ما زالت لها مكانة بين الشباب؟",
     subtitle: "بين المحتوى السريع والقراءة العميقة.. تحولات في نمط المعرفة",
     excerpt: "رغم هيمنة المحتوى المختصر، لا تزال القراءة حاضرة لدى الشباب ولكن بأدوات جديدة، فيما يبقى التحدي الحقيقي في الحفاظ على التركيز وبناء فهم عميق.",
     // ...خاصية content محذوفة
@@ -246,7 +248,7 @@ export const articles = [
     category: "society",
     subcategory: "reports",
     contentSource: "/data/reports/reading-speed-report.md",
-    image: IMAGES.newsroom,
+    image: IMAGES.readingSpeed,
     tags: ["قراءة", "شباب", "ثقافة", "تفكير نقدي"],
     views: "١٢,٦٢٠",
     featured: false,
@@ -254,8 +256,8 @@ export const articles = [
   {
     id: "9",
     slug: "heritage-revival-strategy-madinah",
-    title: "استراتيجية إحياء التراث تعيد رسم التاريخ في المدينة المنورة",
-    subtitle: "توسعات حضرية وخدمات رقمية تعيد تقديم المعالم التاريخية",
+    title: "استراتيجية إحياء التراث",
+    subtitle: "استراتيجية «إحياء التراث» تعيد رسم التاريخ في المدينة المنورة",
     excerpt: "تشهد المدينة المنورة مرحلة تطوير واسعة لمعالمها التاريخية، تجمع بين الترميم المعماري والخدمات الذكية بما يعزز تجربة الزائر.",
     // ...خاصية content محذوفة
     author: {
@@ -277,9 +279,9 @@ export const articles = [
   {
     id: "10",
     slug: "old-alleys-revival-madinah-investigation",
-    title: "الأزقة تستعيد نبضها: التراث في المدينة بين الترميم وما ينتظر الاكتشاف",
-    subtitle: "تحقيق حول المعالم التي أُعيدت للحياة والمواقع التي ما زالت خارج الضوء",
-    excerpt: "رغم مشاريع التطوير الجارية، لا تزال بعض المواقع التاريخية في المدينة المنورة تنتظر التوثيق والإبراز ضمن خارطة التراث الثقافي.",
+    title: "الأزقة تستعيد نبضها والحكايات تعود من جديد",
+    subtitle: "التراث في المدينة المنورة بين الترميم وما ينتظر الاكتشاف",
+    excerpt: "رغم مشاريع الترميم الجارية، لا تزال هناك مواقع وأحياء كاملة في المدينة المنورة تقف خارج دائرة الضوء، تحتفظ بقصصها وتنتظر من يعيد اكتشاف قيمتها التاريخية.",
     // ...خاصية content محذوفة
     author: {
       name: "جنى أبو عنق",
@@ -292,6 +294,16 @@ export const articles = [
     subcategory: "investigations",
     contentSource: "/data/investigations/old-alleys-investigation.md",
     image: IMAGES.heritage,
+    gallery: [
+      {
+        src: "/data/investigations/fahad-alahmadi-speaker.png",
+        caption: "أ. فهد الأحمدي - مرشد سياحي",
+      },
+      {
+        src: "/data/investigations/mohammed-alharbi-speaker.png",
+        caption: "أ. محمد الحربي - باحث في التاريخ العمراني",
+      },
+    ],
     tags: ["تحقيق", "ترميم", "أزقة", "المدينة"],
     views: "٧,٥٨١",
     featured: false,
@@ -391,13 +403,34 @@ export const articles = [
     views: "٨,٤٧٠",
     featured: false,
   },
+  {
+    id: "15",
+    slug: "graffiti-art-vs-visual-distortion",
+    title: "ظاهرة الكتابة على الجدران.. تباين في الآراء حول تصنيفها كـ \"فن شارع\" أو \"تشويه بصري\"",
+    subtitle: "خبر صحفي يرصد الجدل حول الجرافيتي وجهود تحسين المشهد الحضري",
+    excerpt: "تشهد المرافق العامة تصاعداً في ظاهرة الرسومات الجدارية، مما أثار جدلاً حول تصنيفها بين الفن الحديث والتشويه البصري.",
+    author: {
+      name: "ميان الجهني",
+      avatar: IMAGES.threeDEditor,
+      title: "محررة ثري دي",
+    },
+    date: "١٩ أبريل ٢٠٢٦",
+    readTime: "٤ دقائق",
+    category: "society",
+    subcategory: "news",
+    contentSource: "/data/technology/news/graffiti-3d-news.md",
+    image: IMAGES.hero,
+    tags: ["جرافيتي", "فن الشارع", "المدينة", "تخطيط حضري"],
+    views: "٥,١٢٠",
+    featured: false,
+  },
 
   {
     id: "16",
-    slug: "qibaa-walkway-human-centered-cities",
-    title: "جادة قباء: كيف غيّرت أنسنة المدن شكل الحياة؟",
-    subtitle: "تجربة حضرية تضع المشاة في قلب التصميم",
-    excerpt: "تحولت جادة قباء من ممر مكتظ بالسيارات إلى فضاء اجتماعي وثقافي نشّط الحركة الاقتصادية وعزّز جودة الحياة.",
+    slug: "bridge-of-nostalgia-old-alleys-social-relations",
+    title: "جسر الحنين: بين حارات المدينة القديمة والأحياء الحديثة وأثرها على العلاقات الاجتماعي",
+    subtitle: "مقال يتناول تحول العلاقات بين حارات المدينة القديمة والمخططات الحديثة",
+    excerpt: "يناقش المقال كيف شكلت الحارة فضاءً اجتماعياً مفتوحاً في الماضي، وكيف أثرت التصاميم العمرانية الحديثة على طبيعة التواصل بين الجيران.",
     // ...خاصية content محذوفة
     author: {
       name: "ريمان الأحمدي",
@@ -408,17 +441,17 @@ export const articles = [
     readTime: "٦ دقائق",
     category: "heritage",
     subcategory: "articles",
-    contentSource: "/data/heritage/articles/qibaa-humanization-article.md",
+    contentSource: "/data/heritage/articles/old-alleys-social-relations-article.md",
     image: "/data/city-humanization-qabaa.png",
-    tags: ["جادة قباء", "أنسنة المدن", "تخطيط حضري", "المدينة"],
+    tags: ["تراث", "المدينة المنورة", "أنسنة المدن", "مجتمع"],
     views: "٧,٩٨٠",
     featured: false,
   },
   {
     id: "17",
     slug: "spiritual-atmosphere-prophets-mosque-report",
-    title: "أجواء روحانية في المسجد النبوي خلال رمضان",
-    subtitle: "أرقام تشغيلية وخدمات تنظيمية تدعم تجربة الزائر",
+    title: "في طيبة… حشود بالملايين وتنظيم يُدار بعيون رقمية",
+    subtitle: "توافد كثيف في أجواء روحانية",
     excerpt: "شهد المسجد النبوي كثافة عالية من المصلين والزوار مع منظومة تشغيلية متكاملة شملت التنظيم والإرشاد والخدمات المتعددة.",
     // ...خاصية content محذوفة
     author: {
@@ -519,8 +552,8 @@ export const articles = [
   {
     id: "21",
     slug: "madinah-digital-transformation-services-investigation",
-    title: "التحول الرقمي في المدينة المنورة: بين سرعة الخدمة واتساع الفجوة الرقمية",
-    subtitle: "تحقيق يرصد أثر التحول الرقمي على جودة الخدمة وشمولية الوصول لجميع الفئات",
+    title: "التحول الرقمي في المدينة المنورة... بين سرعة الخدمة واتساع الفجوة الرقمية",
+    subtitle: "تحقيق حول التحولات الرقمية في خدمات المدينة المنورة وكفاءة الأنظمة الذكية",
     excerpt: "تحقيق ميداني وتحليلي يكشف كيف حسنت الخدمات الرقمية سرعة الإنجاز، وفي الوقت نفسه أبرز تحدي الفجوة الرقمية خصوصًا لدى كبار السن.",
     // ...خاصية content محذوفة
     author: {
@@ -595,7 +628,7 @@ export const articles = [
     category: "technology",
     subcategory: "articles",
     contentSource: "/data/technology/articles/reengineering-news-article.md",
-    image: IMAGES.newsroom,
+    image: IMAGES.techWorkspace,
     tags: ["إعلام رقمي", "تحرير", "تفاعل", "مصداقية"],
     views: "٤,٧٨٠",
     featured: false,
@@ -748,7 +781,7 @@ export const articles = [
     readTime: "٣ دقائق",
     category: "technology",
     subcategory: "news",
-    contentSource: "/data/technology/infographics/3d-news-infographic.md",
+    // contentSource: "\data\technology\infographics\d-news-infographic.md",
     image: "/data/infographic-youth-content.png",
     tags: ["إنفوجرافيك", "3D", "إعلام", "تحول رقمي"],
     views: "١,٩٤٠",
@@ -758,7 +791,7 @@ export const articles = [
     id: "30",
     slug: "text-image-audio-news-consumption-youth",
     title: "بين النص والصورة والصوت: كيف يفضل شباب المدن متابعة الأخبار؟",
-    subtitle: "تقرير عن تحولات تلقي الأخبار لدى الشباب في البيئة الرقمية",
+    subtitle: "تحولات في استهلاك المحتوى الإعلامي",
     excerpt: "يرصد التقرير انتقال الشباب من النمط التقليدي إلى صيغ خبرية متعددة الوسائط، مع بقاء الموثوقية معيارًا حاسمًا في الاختيار.",
     // ...خاصية content محذوفة
     author: {
@@ -771,7 +804,7 @@ export const articles = [
     category: "society",
     subcategory: "reports",
     contentSource: "/data/society/reports/text-image-audio-news-consumption-report.md",
-    image: IMAGES.newsroom,
+    image: IMAGES.society,
     tags: ["شباب", "استهلاك الأخبار", "فيديو", "بودكاست"],
     views: "٣,٣٢٠",
     featured: false,
@@ -784,7 +817,7 @@ export const articles = [
     excerpt: "يناقش المقال أثر تطور صيغ الخبر على فهم الجمهور، وكيف يمكن أن يتحول الشكل إلى قيمة معرفية أو إلى عبء إذا طغى على المضمون.",
     // ...خاصية content محذوفة
     author: {
-      name: "مودة الجيادي",
+      name: "موده حسن سعيد الجيادي",
       avatar: IMAGES.editor1,
       title: "محررة إعلام رقمي",
     },
@@ -799,12 +832,11 @@ export const articles = [
     featured: false,
   },
   {
-    id: "1001",
+    id: "32",
     slug: "heritage-renovation-news",
     title: "إطلاق مشروع ترميم الأزقة التاريخية في المدينة المنورة",
     subtitle: "جهود جديدة للحفاظ على التراث العمراني وتعزيز الهوية الثقافية",
     excerpt: "أعلنت هيئة تطوير المدينة عن مشروع لترميم الأزقة التاريخية في قلب المدينة، ضمن جهودها للحفاظ على التراث العمراني وتعزيز الهوية الثقافية للمنطقة.",
-    // ...خاصية content محذوفة
     author: {
       name: "جنى أبو عنق",
       avatar: IMAGES.opinionEditor,
@@ -820,6 +852,90 @@ export const articles = [
     views: "١٬٠٠٠",
     featured: false,
   },
+  {
+    id: "33",
+    slug: "london-ontario-infographic",
+    title: "بين لندن وأونتاريو (إنفوجرافيك)",
+    subtitle: "خبر إنفوجرافيك يستعرض أرقاماً وإحصائيات مفصلة",
+    excerpt: "يعرض هذا الإنفوجرافيك مقارنة وإحصائيات بصرية توضح الفوارق بشكل مباشر.",
+    author: {
+      name: "روان الحربي",
+      avatar: IMAGES.editorChief,
+      title: "رئيسة التحرير",
+    },
+    date: "٢١ أبريل ٢٠٢٦",
+    readTime: "١ دقيقة",
+    category: "society",
+    subcategory: "news",
+    contentSource: "/data/society/news/london-ontario-infographic.md",
+    image: "/data/بين لندن واونتاريو.png",
+    tags: ["إنفوجرافيك", "أخبار", "إحصائيات"],
+    views: "١٬١٢٠",
+    featured: false,
+  },
+  {
+    id: "34",
+    slug: "reading-speed-infographic-news",
+    title: "القراءة في زمن السرعة (إنفوجرافيك)",
+    subtitle: "خبر إنفوجرافيك حول تحولات القراءة",
+    excerpt: "يستعرض هذا الإنفوجرافيك أبرز الأرقام والمعطيات حول ممارسات القراءة بين الشباب اليوم.",
+    author: {
+      name: "ميان الجهني",
+      avatar: IMAGES.opinionEditor,
+      title: "باحثة إعلامية",
+    },
+    date: "٢١ أبريل ٢٠٢٦",
+    readTime: "١ دقيقة",
+    category: "society",
+    subcategory: "news",
+    contentSource: "/data/society/news/reading-speed-infographic.md",
+    image: "/data/القراءاه في زمن السرعة.png",
+    tags: ["إنفوجرافيك", "قراءة", "شباب"],
+    views: "٣٬٤٠٠",
+    featured: false,
+  },
+  {
+    id: "35",
+    slug: "saudi-ai-infographic",
+    title: "السعودية تعزز حضورها عالميا في الذكاء الاصطناعي",
+    subtitle: "خبر إنفوجرافيك عن المنجزات التقنية للمملكة",
+    excerpt: "تعرف على الأرقام والمؤشرات التي تعكس الخطوات المتسارعة نحو ريادة الذكاء الاصطناعي عالمياً.",
+    author: {
+      name: "لميس الصاعدي",
+      avatar: IMAGES.managingEditor,
+      title: "مديرة التحرير",
+    },
+    date: "٢١ أبريل ٢٠٢٦",
+    readTime: "١ دقيقة",
+    category: "technology",
+    subcategory: "news",
+    contentSource: "/data/technology/news/saudi-ai-infographic.md",
+    image: "/data/السعوديه تعزز حضورها عالميا في الذكا الاصطناعي.png",
+    tags: ["إنفوجرافيك", "الذكاء الاصطناعي", "السعودية", "رقمنة"],
+    views: "٥٬٨٩٠",
+    featured: false,
+  },
+  {
+    id: "36",
+    slug: "brt-madinah-infographic",
+    title: "إطلاق مشروع الحافلات السريعة في المدينة المنورة",
+    subtitle: "خبر إنفوجرافيك عن تحسين منظومة النقل العام",
+    excerpt: "تفاصيل بالأرقام حول مشروع الحافلات السريعة (BRT) وأثره على جودة الحياة والحركة المرورية.",
+    author: {
+      name: "ليلى الأحمدي",
+      // avatar: IMAGES.AryamEditor,
+      title: "مراسلة حضرية",
+    },
+    date: "٢١ أبريل ٢٠٢٦",
+    readTime: "٢ دقيقة",
+    category: "heritage",
+    subcategory: "news",
+    contentSource: "/data/heritage/news/brt-madinah-infographic.md",
+    image: "/data/اطلاق مشروع الحافلات السريعه 1.png",
+    tags: ["إنفوجرافيك", "المدينة المنورة", "النقل العام", "مشاريع"],
+    views: "٤٬٣٢٠",
+    featured: false,
+  }
 ];
 
 export const editors = [

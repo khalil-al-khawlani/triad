@@ -28,8 +28,7 @@ export function ThreeDPage() {
             <h1 className="text-white font-black mb-5" style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: "1.3" }}>
 ظاهرة الكتابة على الجدران.. تباين في الآراء حول تصنيفها كـ "فن شارع" أو "تشويه بصري"            </h1>
             <p className="text-blue-100 leading-loose text-lg">
-              هذه الصفحة تمثل مسار العرض التفاعلي داخل المنصة، حيث يتم تقديم المحتوى بصيغة أقرب إلى التجربة
-              البصرية متعددة الزوايا، تمهيدًا لتوسيعها لاحقًا إلى تجارب 360 وبيئات أكثر تفاعلًا.
+              تشهد المرافق العامة والأسوار في الآونة الأخيرة تصاعداً في ظاهرة الرسومات وكتابات الجرافيتي، مما أثار جدلاً واسعاً حول تصنيفها بين الفن الحديث "فن الشارع" وبين الممارسات التي تندرج تحت التشويه البصري للمدن.
             </p>
           </div>
         </div>
@@ -98,6 +97,41 @@ export function ThreeDPage() {
                 في حال بطء التحميل داخل الصفحة، استخدم الفتح الخارجي.
               </span>
             </div>
+          </div>
+        </div>
+
+        {/* News Story Section */}
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 mb-16 px-6 sm:px-16">
+          <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-100">
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-50 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80" alt="ميان الجهني" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p className="text-[#0a1f44] font-bold">ميان عبدالرحمن الجهني</p>
+              <p className="text-gray-400 text-sm">محررة ثري دي | ٢١ أبريل ٢٠٢٦</p>
+            </div>
+          </div>
+
+          <div className="prose prose-lg max-w-none">
+            <p className="text-gray-600 leading-loose mb-8 text-lg font-medium">
+              ويأتي هذا التباين في ظل سعي الجهات المعنية إلى تحسين المشهد الحضري والقضاء على العشوائيات البصرية، حيث تشير التقارير الميدانية إلى أن تحويل الجدران العامة إلى ساحات للرسم دون تصريح مسبق يربك الجهود الرامية لتنظيم الهوية البصرية للمناطق السكنية والتجارية.
+            </p>
+
+            <h3 className="text-[#0a1f44] font-black text-2xl mb-6 mt-10">تباين الآراء بين الفن والتشويه</h3>
+            <p className="text-gray-600 leading-loose mb-8">
+              من جانبهم، يرى مؤيدو هذا الفن أن "الجرافيتي" يمثل لغة بصرية عالمية تضفي حيوية على الصمت الخرساني، مطالبين بضرورة تخصيص مساحات نظامية تحتضن هذه المواهب وتوجهها بما يخدم الجمال العام. وفي المقابل، يؤكد مختصون في التخطيط الحضري أن الكتابات العشوائية وغير المدروسة تساهم في خفض القيمة الجمالية للمرافق، وتُحمل الميزانيات أعباء إضافية لإزالتها وإعادة طلائها.
+            </p>
+
+            <div className="bg-blue-50/50 rounded-2xl p-8 border-r-4 border-[#1e3a8a] my-10">
+              <p className="text-[#1e3a8a] font-bold text-xl leading-relaxed italic">
+                "الحاجة ملحة لإيجاد ميثاق يجمع بين دعم الإبداع الشبابي وبين الحفاظ على الأنظمة الرسمية، لضمان عدم الانزلاق نحو الفوضى البصرية."
+              </p>
+            </div>
+
+            <h3 className="text-[#0a1f44] font-black text-2xl mb-6 mt-10">نحو ميثاق بصري مشترك</h3>
+            <p className="text-gray-600 leading-loose mb-8">
+              وختاماً، تبرز الحاجة إلى إيجاد ميثاق يجمع بين دعم الإبداع الشبابي وبين الحفاظ على الأنظمة الرسمية، وذلك من خلال مبادرات حكومية تتبنى تحويل الجدران الصماء إلى لوحات فنية منظمة، تضمن عدم الانزلاق نحو الفوضى البصرية وتكفل حق المجتمع في بيئة حضارية نظيفة ومنظمة.
+            </p>
           </div>
         </div>
 

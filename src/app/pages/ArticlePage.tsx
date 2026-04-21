@@ -213,24 +213,37 @@ export function ArticlePage() {
       if (imageMatch) {
         flushParagraph();
         flushList();
-        const floatClass = imageCount % 2 === 0 ? "sm:float-left sm:ml-4" : "sm:float-right sm:mr-4";
-        imageCount += 1;
         const imageAlt = imageMatch[1].trim() || article.title;
         const imageSrc = imageMatch[2].trim();
+        
+        const isInfographic = imageAlt.includes("انفوجرافيك") || imageAlt.includes("إنفوجرافيك");
+        
+        const floatClass = (imageCount % 2 === 0) ? "sm:float-left sm:ml-4" : "sm:float-right sm:mr-4";
+        imageCount += 1;
+
+        const wrapperClass = isInfographic
+          ? "my-8 w-full block"
+          : `my-6 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm w-full sm:w-36 md:w-40 aspect-[4/6] ${floatClass}`;
+          
+        const imgClass = isInfographic
+          ? "w-full h-auto object-contain"
+          : "w-full h-full object-cover";
 
         blocks.push(
           <figure
             key={`img-${index}`}
-            className={`my-6 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm w-full sm:w-36 md:w-40 aspect-[4/6] ${floatClass}`}
+            className={wrapperClass}
           >
             <img
               src={imageSrc}
-              alt={imageAlt}
-              className="w-full h-full object-cover"
+              alt={imageAlt.replace(/إ?نفوجرافيك:?/, "").trim()}
+              className={imgClass}
             />
-            <figcaption className="px-3 py-2 text-[11px] text-gray-500 bg-gray-50 leading-relaxed">
-              {imageAlt}
-            </figcaption>
+            {!isInfographic && (
+              <figcaption className="px-3 py-2 text-[11px] text-gray-500 bg-gray-50 leading-relaxed">
+                {imageAlt}
+              </figcaption>
+            )}
           </figure>
         );
         return;
