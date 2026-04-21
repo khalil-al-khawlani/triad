@@ -4,7 +4,7 @@ import MaintenancePage from "./MaintenancePage";
 // import {fonts}from "./styles/fonts.css";
 
 // تفعيل وضع الصيانة
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 function App() {
   if (MAINTENANCE_MODE) {
