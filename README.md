@@ -1,40 +1,50 @@
+# Triad — Arabic News Platform UI
 
-# Arabic News Platform UI
+واجهة تحريرية عربية مبنية بـ **React + Vite** لعرض محتوى صحفي متعدد الأنواع (تقارير، مقالات، تحقيقات، أخبار، قصص، إنفوجرافيك) مع دعم **RTL** وتحميل المحتوى الطويل من ملفات **Markdown**.
 
-واجهة منصة أخبار عربية مبنية باستخدام React + Vite، مع هيكل تحريري منظم (تقارير، مقالات، تحقيقات، أخبار، قصص) ودعم عرض محتوى عربي طويل عبر ملفات Markdown مرتبطة بكل مادة.
+## نظرة سريعة
 
-## Project Snapshot
+- **الاتجاه**: RTL افتراضيًا
+- **التركيز**: تجربة عربية أولاً (Arabic-first UX)
+- **الواجهة**: React + React Router
+- **البناء**: Vite
+- **التصميم**: Tailwind CSS + CSS مخصص
+- **مصدر المحتوى**: بيانات المقالات + ملفات Markdown داخل `public/data`
 
-- **Direction**: RTL by default
-- **Language**: Arabic-first content and UX
-- **Framework**: React + React Router + Vite
-- **Styling**: Tailwind + custom CSS
-- **Status**: Build passes and content-source integrity checks are in place
+## المزايا الأساسية
 
-## Key Features
-
-- بنية صفحات واضحة: رئيسية، أقسام، تصنيفات فرعية، صفحة مقال، فريق التحرير، تواصل، وصفحة 3D.
-- عرض المقالات من مصدرين مضبوطين:
-  - `content` داخل البيانات
-  - `contentSource` من ملفات Markdown في `public/data`
-- فصل المحتوى حسب الأقسام الرئيسية:
+- بنية صفحات تحريرية واضحة:
+  - الرئيسية
+  - الأقسام
+  - التصنيفات الفرعية
+  - صفحة المقال
+  - من نحن
+  - فريق التحرير
+  - تواصل
+  - صفحة 3D
+- تنظيم المحتوى حسب الأقسام:
   - `heritage`
   - `technology`
   - `society`
-- فصل المحتوى حسب النوع التحريري:
+- تنظيم المحتوى حسب النوع التحريري:
   - `reports`
   - `articles`
   - `investigations`
   - `news`
   - `stories`
   - `infographics`
-- أدوات تحقق داخل `scripts/` للتأكد من التطابق بين المصدر الرئيسي وملفات المحتوى.
+- دعم `contentSource` لقراءة النص من ملف Markdown مباشر وقت التشغيل.
+- أدوات تحقق وسكربتات مزامنة لضبط تطابق المحتوى.
 
-## Routes
+## المسارات (Routes)
 
-Defined in `src/app/routes.tsx`:
+المسارات معرفة في:
 
-- `/` (about)
+- `src/app/routes.tsx`
+
+المسارات الفعلية:
+
+- `/` (تعرض صفحة About كافتراضي)
 - `/home`
 - `/category/:categorySlug`
 - `/category/:categorySlug/:subcategorySlug`
@@ -44,96 +54,133 @@ Defined in `src/app/routes.tsx`:
 - `/editors`
 - `/contact`
 
-## Content Architecture
+## هيكل المحتوى
 
-### Primary data source
+### 1) مصدر البيانات الأساسي
 
 - `src/app/data/mockData.ts`
 
-This file contains article metadata and content blocks and can also point to a Markdown file via `contentSource`.
+يحتوي على بيانات المقالات الوصفية (العنوان، الكاتب، القسم...) ويمكن أن يحتوي:
 
-### Public content files
+- محتوى مباشر (`content`)
+- أو رابط ملف محتوى (`contentSource`)
 
-- `public/data/heritage/**`
-- `public/data/technology/**`
-- `public/data/society/**`
+### 2) ملفات المحتوى العامة
 
-Each article with `contentSource` points to one dedicated `.md` file.
+- `public/data/`
 
-### Runtime behavior
+تتوزع تحت مجلدات الأقسام والأنواع التحريرية.
 
-Article rendering logic in `src/app/pages/ArticlePage.tsx` loads `contentSource` directly when provided.
+### 3) سلوك وقت التشغيل
 
-## Install and Run
+- `src/app/pages/ArticlePage.tsx`
+
+عند وجود `contentSource` يتم جلب Markdown وعرضه داخل صفحة المقال.
+
+## التشغيل المحلي
+
+### المتطلبات
+
+- Node.js 18+
+- npm 9+
+
+### التثبيت والتشغيل
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production build:
+### بناء نسخة الإنتاج
 
 ```bash
 npm run build
 ```
 
-Preview production build locally:
+### معاينة نسخة الإنتاج
 
 ```bash
 npm run start
 ```
 
-## Quality and Integrity Checks
+## أوامر المشروع
 
-The repository includes scripts used to keep content safe and consistent:
+الأوامر المعرفة في:
 
-- `scripts/report-content-sync.cjs`
-  - Generates a per-article report (id, title, category, type, source, status).
-- `scripts/sync-content-sources-robust.cjs`
-  - Syncs linked markdown files from article content safely block-by-block.
-- `scripts/verify-content-sync-robust.cjs`
-  - Verifies exact equality between inline content and linked markdown.
+- `package.json`
 
-Run manually:
+- `npm run dev` → تشغيل بيئة التطوير
+- `npm run build` → بناء الإنتاج
+- `npm run start` → معاينة البناء محليًا
+
+## أدوات سلامة المحتوى
+
+السكربتات داخل:
+
+- `scripts/`
+
+أهم الأدوات:
+
+- `report-content-sync.cjs`
+  - تقرير حالة التوافق بين بيانات المقالات وملفات المحتوى.
+- `sync-content-sources-robust.cjs`
+  - مزامنة المحتوى من المصدر الرئيسي إلى ملفات Markdown.
+- `verify-content-sync-robust.cjs`
+  - تحقق صارم من التطابق النصي.
+
+تشغيل يدوي:
 
 ```bash
 node scripts/report-content-sync.cjs
 node scripts/verify-content-sync-robust.cjs
 ```
 
-## Repository Structure
+## هيكل المستودع
 
 ```text
-src/
-  app/
-    data/mockData.ts
-    pages/
-    components/
-
-public/
-  data/
-    heritage/
-    technology/
-    society/
-    ...
-
-scripts/
+triad/
+├─ src/
+│  ├─ app/
+│  │  ├─ components/
+│  │  ├─ data/
+│  │  │  └─ mockData.ts
+│  │  ├─ pages/
+│  │  └─ routes.tsx
+│  ├─ styles/
+│  └─ main.tsx
+├─ public/
+│  ├─ data/
+│  │  ├─ heritage/
+│  │  ├─ technology/
+│  │  └─ society/
+│  └─ ...
+├─ scripts/
+├─ package.json
+└─ README.md
 ```
 
-## Release Checklist
+## سير عمل تحرير المحتوى (مقترح)
 
-- [ ] `npm run build` passes
-- [ ] Content integrity report returns `MATCH` for all linked articles
-- [ ] All `contentSource` paths exist under `public/data`
-- [ ] Mobile and desktop checks completed for core pages
+1. تحديث بيانات المقال في `mockData.ts`.
+2. تحديث/إضافة ملف Markdown داخل `public/data`.
+3. تشغيل سكربتات التحقق من التطابق.
+4. تشغيل `npm run build` قبل الدمج.
 
-## Notes
+## قائمة تحقق قبل التسليم
 
-- Old archive files (`*-full.md`) may remain for reference, while active content uses per-article files.
-- If updating article text, run sync/verify scripts before release to avoid mismatches.
+- [ ] `npm run build` يمر بدون أخطاء
+- [ ] روابط `contentSource` تشير إلى ملفات موجودة
+- [ ] نتائج `report-content-sync` سليمة
+- [ ] نتائج `verify-content-sync-robust` سليمة
 
-## Credits
+## المساهمة
 
-- Original design reference: Figma
+- حافظ على دعم RTL وعدم كسر تجربة العربية.
+- استخدم أسماء ملفات واضحة وثابتة للمحتوى.
+- عند تعديل المحتوى التحريري، حدّث ملفات Markdown والبيانات معًا.
+- لا تضف تغييرات غير مرتبطة بنفس الـ PR.
+
+## مرجع التصميم
+
+- Figma:
   - https://www.figma.com/design/m1bkB8F5aZeyDHTvw4lmMd/Arabic-News-Platform-UI
-  
