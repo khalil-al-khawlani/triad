@@ -40,7 +40,7 @@
 
 المسارات معرفة في:
 
-- `/home/runner/work/triad/triad/src/app/routes.tsx`
+- `src/app/routes.tsx`
 
 المسارات الفعلية:
 
@@ -58,7 +58,7 @@
 
 ### 1) مصدر البيانات الأساسي
 
-- `/home/runner/work/triad/triad/src/app/data/mockData.ts`
+- `src/app/data/mockData.ts`
 
 يحتوي على بيانات المقالات الوصفية (العنوان، الكاتب، القسم...) ويمكن أن يحتوي:
 
@@ -67,13 +67,13 @@
 
 ### 2) ملفات المحتوى العامة
 
-- `/home/runner/work/triad/triad/public/data/`
+- `public/data/`
 
 تتوزع تحت مجلدات الأقسام والأنواع التحريرية.
 
 ### 3) سلوك وقت التشغيل
 
-- `/home/runner/work/triad/triad/src/app/pages/ArticlePage.tsx`
+- `src/app/pages/ArticlePage.tsx`
 
 عند وجود `contentSource` يتم جلب Markdown وعرضه داخل صفحة المقال.
 
@@ -107,7 +107,7 @@ npm run start
 
 الأوامر المعرفة في:
 
-- `/home/runner/work/triad/triad/package.json`
+- `package.json`
 
 - `npm run dev` → تشغيل بيئة التطوير
 - `npm run build` → بناء الإنتاج
@@ -117,7 +117,7 @@ npm run start
 
 السكربتات داخل:
 
-- `/home/runner/work/triad/triad/scripts/`
+- `scripts/`
 
 أهم الأدوات:
 
