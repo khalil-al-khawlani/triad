@@ -183,4 +183,4 @@ triad/
 ## مرجع التصميم
 
 - Figma:
-  - https://www.figma.com/design/m1bkB8F5aZeyDHTvw4lmMd/Arabic-News-Platform-UI
+  - [https://www.figma.com/make/m1bkB8F5aZeyDHTvw4lmMd/triad?code-node-id=0-9&p=f&t=FrgyVXZAOub1wSIX-0&fullscreen=1](https://www.figma.com/make/m1bkB8F5aZeyDHTvw4lmMd/triad?code-node-id=0-9&p=f&t=FrgyVXZAOub1wSIX-0&fullscreen=1)
